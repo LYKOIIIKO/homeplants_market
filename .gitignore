@@ -23,3 +23,6 @@ public
 *.njsproj
 *.sln
 *.sw?
+
+vite-env.d.ts
+.env.local
