@@ -1,10 +1,33 @@
 import { Box, List, ListItem, Paper, Typography } from "@mui/material";
 import { Link, NavLink } from "react-router";
 import ArrowDropDownIcon from "@mui/icons-material/ArrowDropDown";
-import Logo from "../../../../../../assets/Logo";
-import styles from './Navigation.module.css'
+import Logo from "../logo/Logo";
+import styles from "./Navigation.module.css";
 
 function Navigation() {
+	const menuItems = [
+		{ id: 0, name: "каталог", link: "/catalog", dropMenu: true },
+		{ id: 1, name: "блог", link: "/blog", dropMenu: false },
+		{ id: 3, name: "доставка", link: "/delivery", dropMenu: false },
+		{ id: 4, name: "о нас", link: "/about", dropMenu: false },
+	];
+
+	const subMenuItems = [
+		{
+			name: "каталог",
+			items: [
+				{ title: "Комнатные растения", link: "/catalog/indoor-plants" },
+				{ title: "Уличные растения", link: "/catalog/outdoor-plants" },
+				{
+					title: "Очищающие воздух растения",
+					link: "/catalog/air-purifying-plants",
+				},
+				{ title: "Горшки и кашпо", link: "/catalog/planters-and-pots" },
+				{ title: "Инструмент", link: "/catalog/tools" },
+			],
+		},
+	];
+
 	return (
 		<List
 			sx={{
@@ -14,73 +37,64 @@ function Navigation() {
 				pb: 0,
 			}}
 		>
-			<ListItem className={styles.navElem}>
-				<NavLink className={styles.navLink} to="/catalog" >
-					<Box display="flex" className={styles.navElemActive}>
-						<Typography variant="body1" textTransform="uppercase">
-							Каталог
-						</Typography>
-						<ArrowDropDownIcon />
-					</Box>
-				</NavLink>
-				<Paper variant="outlined" className={styles.dropItem}>
-					<List>
-						<ListItem>
-							<Link to="/catalog/indoor-plants">
-								<Typography>Комнатные растения</Typography>
-							</Link>
-						</ListItem>
-						<ListItem>
-							<Link to="/catalog/outdoor-plants">
-								<Typography>Уличные растения</Typography>
-							</Link>
-						</ListItem>
-						<ListItem>
-							<Link to="/catalog/air-purifying-plants">
-								<Typography>
-									Очищающие воздух растения
+			{menuItems.map((item) => {
+				return (
+					<ListItem
+						className={styles.navElem}
+						sx={{ order: item.id }}
+					>
+						<NavLink className={styles.navLink} to={item.link}>
+							<Box
+								display="flex"
+								alignItems="center"
+								className={styles.navElemActive}
+							>
+								<Typography
+									variant="subtitle1"
+									textTransform="uppercase"
+								>
+									{item.name}
 								</Typography>
-							</Link>
-						</ListItem>
-						<ListItem>
-							<Link to="/catalog/planters-and-pots">
-								<Typography>Горшки и кашпо</Typography>
-							</Link>
-						</ListItem>
-						<ListItem>
-							<Link to="/catalog/tools">
-								<Typography>Инструмент</Typography>
-							</Link>
-						</ListItem>
-					</List>
-				</Paper>
-			</ListItem>
 
-			<ListItem>
-				<NavLink to="/blog">
-					<Typography variant="subtitle1" textTransform="uppercase">
-						Блог
-					</Typography>
-				</NavLink>
-			</ListItem>
-			<ListItem>
+								{item.dropMenu && <ArrowDropDownIcon />}
+							</Box>
+						</NavLink>
+
+						{subMenuItems.map((subItem) => {
+							if (subItem.name === item.name)
+								return (
+									<Paper
+										variant="outlined"
+										className={styles.dropItem}
+									>
+										<List>
+											{subItem.items.map((item) => {
+												return (
+													<ListItem>
+														<Link to={item.link}>
+															<Typography
+																className={
+																	styles.navLink
+																}
+															>
+																{item.title}
+															</Typography>
+														</Link>
+													</ListItem>
+												);
+											})}
+										</List>
+									</Paper>
+								);
+						})}
+					</ListItem>
+				);
+			})}
+
+			<ListItem sx={{ order: 2 }}>
 				<Link to="/">
 					<Logo />
 				</Link>
-			</ListItem>
-			<ListItem>
-				<NavLink to="/delivery">
-					<Typography variant="subtitle1" textTransform="uppercase">
-						Доставка
-					</Typography>
-				</NavLink>
-			</ListItem>
-			<ListItem>
-				<NavLink to="/about">
-					<Typography variant="subtitle1" textTransform="uppercase">
-						О нас
-					</Typography>
-				</NavLink>
 			</ListItem>
 		</List>
 	);

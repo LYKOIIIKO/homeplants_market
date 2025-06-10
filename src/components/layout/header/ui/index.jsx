@@ -1,3 +1,4 @@
+import "./index.css";
 import { AppBar, Container, Grid } from "@mui/material";
 import Search from "./components/search/Search";
 import Navigation from "./components/navigation/Navigation";
@@ -5,7 +6,7 @@ import UserButtons from "./components/userButtons/UserButtons";
 
 function Header() {
 	return (
-		<AppBar color="transparent" position="static" variant="outlined">
+		<AppBar color="inherit" position="sticky" variant="outlined">
 			<Container maxWidth="xl">
 				<Grid container alignItems="center" spacing="auto">
 					<Grid size="auto">

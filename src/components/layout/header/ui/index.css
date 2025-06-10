@@ -1,0 +1,3 @@
+a.active div::before {
+	height: 6px;
+}

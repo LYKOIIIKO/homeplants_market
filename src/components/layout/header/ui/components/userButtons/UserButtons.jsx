@@ -9,7 +9,7 @@ function UserButtons() {
 		<>
 			<Grid>
 				<Link to="/account">
-					<IconButton alignItems="center">
+					<IconButton>
 						<PersonOutlineOutlinedIcon />
 					</IconButton>
 				</Link>

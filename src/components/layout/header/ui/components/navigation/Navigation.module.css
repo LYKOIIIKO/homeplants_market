@@ -1,6 +1,7 @@
 .navElem {
 	position: relative;
 }
+
 .navElem:hover > div {
 	opacity: 1;
 	visibility: visible;
@@ -36,5 +37,9 @@
 	pointer-events: none;
 	box-shadow: 0px 2px 4px 0px rgba(0, 0, 0, 0.05);
 	z-index: 5;
-	transition: all ease 0.3s;
+	transition: all ease 0.5s !important;
+}
+
+.navLink:hover {
+	color: #008342;
 }
