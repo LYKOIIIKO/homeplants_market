@@ -18,7 +18,7 @@ const theme = createTheme({
 		},
 	},
 	typography: {
-		fontFamily: "Jost",
+		fontFamily : [ 'Montserrat' , 'sans-serif' , ]. join ( ',' ),
 		fontSize: 16,
 	},
 });
