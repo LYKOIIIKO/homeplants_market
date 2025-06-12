@@ -7,7 +7,7 @@ import ShoppingCartOutlinedIcon from "@mui/icons-material/ShoppingCartOutlined";
 function UserButtons() {
 	return (
 		<>
-			<Grid>
+			<Grid sx={{ display: { xs: "none", md: "block" } }}>
 				<Link to="/account">
 					<IconButton>
 						<PersonOutlineOutlinedIcon />

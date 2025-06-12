@@ -7,7 +7,7 @@ const theme = createTheme({
 	palette: {
 		mode: "light",
 		primary: {
-			main: "#1976d2",
+			main: "#0a4e41",
 		},
 		secondary: {
 			main: "#f50057",
@@ -18,8 +18,11 @@ const theme = createTheme({
 		},
 	},
 	typography: {
-		fontFamily : [ 'Montserrat' , 'sans-serif' , ]. join ( ',' ),
+		fontFamily: ["Montserrat", "sans-serif"].join(","),
 		fontSize: 16,
+		body2: {
+			color: "#dfe7d0",
+		},
 	},
 });
 

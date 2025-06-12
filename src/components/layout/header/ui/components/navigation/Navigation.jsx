@@ -1,7 +1,7 @@
 import { Box, List, ListItem, Paper, Typography } from "@mui/material";
 import { Link, NavLink } from "react-router";
 import ArrowDropDownIcon from "@mui/icons-material/ArrowDropDown";
-import Logo from "../logo/Logo";
+import Logo from "../../../../../../assets/logo/Logo";
 import styles from "./Navigation.module.css";
 
 function Navigation() {
@@ -39,7 +39,7 @@ function Navigation() {
 		>
 			{menuItems.map((item) => {
 				return (
-					<ListItem
+					<ListItem key={item.id}
 						className={styles.navElem}
 						sx={{ order: item.id }}
 					>
@@ -63,14 +63,14 @@ function Navigation() {
 						{subMenuItems.map((subItem) => {
 							if (subItem.name === item.name)
 								return (
-									<Paper
+									<Paper key={subItem}
 										variant="outlined"
 										className={styles.dropItem}
 									>
 										<List>
-											{subItem.items.map((item) => {
+											{subItem.items.map((item, index) => {
 												return (
-													<ListItem>
+													<ListItem key={index}>
 														<Link to={item.link}>
 															<Typography
 																className={
