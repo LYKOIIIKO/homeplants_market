@@ -39,7 +39,7 @@ function Header() {
 							<Search />
 						</Grid>
 						<Grid
-							size={5}
+							size="grow"
 							sx={{
 								display: { xs: "flex", lg: "none" },
 								justifyContent: "center",
@@ -60,7 +60,7 @@ function Header() {
 						<Grid
 							container
 							spacing={1}
-							size={{ xs: 4, lg: 2 }}
+							size={3}
 							justifyContent="flex-end"
 						>
 							<UserButtons />

@@ -66,15 +66,35 @@ function DrawerMenu(props) {
 					))}
 				</List>
 				<Box sx={{ display: { xs: "block", md: "none" } }}>
-					<Divider sx={{ mb: 2 }} />
-					<Link to="/account">
-						<Typography
-							variant="subtitle1"
-							textTransform="uppercase"
+					<Divider />
+					<List>
+						<ListItem
+							display="flex"
+							sx={{ justifyContent: "center" }}
 						>
-							аккаунт
-						</Typography>
-					</Link>
+							<Link to="/account">
+								<Typography
+									variant="subtitle1"
+									textTransform="uppercase"
+								>
+									аккаунт
+								</Typography>
+							</Link>
+						</ListItem>
+						<ListItem
+							display="flex"
+							sx={{ justifyContent: "center" }}
+						>
+							<Link to="/favorite">
+								<Typography
+									variant="subtitle1"
+									textTransform="uppercase"
+								>
+									избранное
+								</Typography>
+							</Link>
+						</ListItem>
+					</List>
 				</Box>
 			</Box>
 		</Drawer>

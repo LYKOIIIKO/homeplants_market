@@ -14,7 +14,7 @@ function UserButtons() {
 					</IconButton>
 				</Link>
 			</Grid>
-			<Grid>
+			<Grid sx={{ display: { xs: "none", md: "block" } }}>
 				<Link to="/favorite">
 					<IconButton>
 						<Badge color="secondary" variant="dot">

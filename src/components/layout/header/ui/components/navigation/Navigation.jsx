@@ -39,7 +39,8 @@ function Navigation() {
 		>
 			{menuItems.map((item) => {
 				return (
-					<ListItem key={item.id}
+					<ListItem
+						key={item.id}
 						className={styles.navElem}
 						sx={{ order: item.id }}
 					>
@@ -63,26 +64,31 @@ function Navigation() {
 						{subMenuItems.map((subItem) => {
 							if (subItem.name === item.name)
 								return (
-									<Paper key={subItem}
+									<Paper
+										key={subItem}
 										variant="outlined"
 										className={styles.dropItem}
 									>
 										<List>
-											{subItem.items.map((item, index) => {
-												return (
-													<ListItem key={index}>
-														<Link to={item.link}>
-															<Typography
-																className={
-																	styles.navLink
-																}
+											{subItem.items.map(
+												(item, index) => {
+													return (
+														<ListItem key={index}>
+															<Link
+																to={item.link}
 															>
-																{item.title}
-															</Typography>
-														</Link>
-													</ListItem>
-												);
-											})}
+																<Typography
+																	className={
+																		styles.navLink
+																	}
+																>
+																	{item.title}
+																</Typography>
+															</Link>
+														</ListItem>
+													);
+												}
+											)}
 										</List>
 									</Paper>
 								);
