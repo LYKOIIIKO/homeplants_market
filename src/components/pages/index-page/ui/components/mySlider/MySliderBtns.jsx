@@ -1,15 +1,15 @@
-import { IconButton } from "@mui/material";
-
 import ArrowBackIosNewIcon from "@mui/icons-material/ArrowBackIosNew";
 import ArrowForwardIosIcon from "@mui/icons-material/ArrowForwardIos";
+import { IconButton } from "@mui/material";
 import { useSwiper } from "swiper/react";
 
 function MySliderBtns() {
-	const swiper = useSwiper()
+	const swiper = useSwiper();
 	return (
 		<>
 			<IconButton
 				className=".myslider_button_prev"
+				onClick={() => swiper.slidePrev()}
 				color="info"
 				sx={{
 					position: "absolute",

@@ -1,10 +1,10 @@
-import MySlider from './components/mySlider/MySlider'
+import MySlider from "./components/mySlider/MySlider";
 
 function IndexPage() {
-  return (
-	<>
-   <MySlider />
-  </>
-  )
+	return (
+		<>
+			<MySlider />
+		</>
+	);
 }
-export default IndexPage
+export default IndexPage;
