@@ -1,0 +1,12 @@
+.container {
+	user-select: none;
+	display: flex;
+	flex-direction: column;
+	gap: 20px;
+	align-items: center;
+	padding: 10px;
+}
+
+.wrapperUserName {
+	display: flex;
+}

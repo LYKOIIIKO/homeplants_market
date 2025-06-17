@@ -14,7 +14,7 @@
 
 .wrapperImg {
 	position: relative;
-	max-height: 335px;
+	
 	display: flex;
 	align-items: center;
 }

@@ -1,16 +1,16 @@
 import { Keyboard, Navigation } from "swiper/modules";
 import { Swiper, SwiperSlide } from "swiper/react";
-import ProductCard from "../../../../../../catalog-page/ui/components/productCard/ProductCard";
-import SliderBottomBtns from "./SliderBottomBtns";
-import "./SliderPopular.css";
+import SliderBottomBtns from "../../../../components/sectionPopularProducts/components/sliderPopular/SliderBottomBtns";
+import FeedbackCard from "../FeedbackCard/FeedbackCard";
+import "./SliderFeedback.css";
 
-function SliderPopular(props) {
-	const { product } = props;
+function SliderFeedback(props) {
+	const { item } = props;
 	return (
 		<>
 			<Swiper
-				className="slider-popular_products"
-				slidesPerView={4}
+				className="slider-feedback"
+				slidesPerView={3}
 				spaceBetween={50}
 				navigation={{
 					nextEl: "slider_bottom_btn-prev",
@@ -23,42 +23,38 @@ function SliderPopular(props) {
 				modules={[Navigation, Keyboard]}
 				breakpoints={{
 					"1200": {
-						slidesPerView: 4,
-						spaceBetween: 40,
-					},
-					"900": {
 						slidesPerView: 3,
-						spaceBetween: 40,
+						spaceBetween: 50,
 					},
-					"600": {
+					
+					"900": {
 						slidesPerView: 2,
-						spaceBetween: 40,
+						spaceBetween: 50,
 					},
 					"0": {
 						slidesPerView: 1,
-						spaceBetween: 20,
 					},
 					
 				}}
-			>
+			> 
 				<SwiperSlide>
-					<ProductCard product={product} />
+					<FeedbackCard item={item} />
 				</SwiperSlide>
 				<SwiperSlide>
-					<ProductCard product={product} />
+					<FeedbackCard item={item} />
 				</SwiperSlide>
 				<SwiperSlide>
-					<ProductCard product={product} />
+					<FeedbackCard item={item} />
 				</SwiperSlide>
 				<SwiperSlide>
-					<ProductCard product={product} />
+					<FeedbackCard item={item} />
 				</SwiperSlide>
 				<SwiperSlide>
-					<ProductCard product={product} />
+					<FeedbackCard item={item} />
 				</SwiperSlide>
 				<SliderBottomBtns />
 			</Swiper>
 		</>
 	);
 }
-export default SliderPopular;
+export default SliderFeedback;
