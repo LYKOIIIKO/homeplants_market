@@ -1,7 +1,7 @@
+import { ThemeProvider, createTheme } from "@mui/material/styles";
 import { BrowserRouter } from "react-router";
 import "./App.css";
 import Layout from "./components/layout";
-import { ThemeProvider, createTheme } from "@mui/material/styles";
 
 const theme = createTheme({
 	palette: {
@@ -25,6 +25,9 @@ const theme = createTheme({
 		fontSize: 16,
 		body2: {
 			color: "#dfe7d0",
+		},
+		h6: {
+			color: "#c2ff00",
 		},
 	},
 });

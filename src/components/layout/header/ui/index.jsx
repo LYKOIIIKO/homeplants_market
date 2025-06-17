@@ -1,13 +1,13 @@
-import "./index.css";
-import { AppBar, Container, Grid, IconButton } from "@mui/material";
-import Search from "./components/search/Search";
-import Navigation from "./components/navigation/Navigation";
-import UserButtons from "./components/userButtons/UserButtons";
-import { useState } from "react";
 import MenuIcon from "@mui/icons-material/Menu";
-import DrawerMenu from "./components/drawerMenu/DrawerMenu";
-import Logo from "../../../../assets/logo/Logo";
+import { AppBar, Container, Grid, IconButton } from "@mui/material";
+import { useState } from "react";
 import { Link } from "react-router";
+import Logo from "../../../../assets/logo/Logo";
+import DrawerMenu from "./components/drawerMenu/DrawerMenu";
+import Navigation from "./components/navigation/Navigation";
+import Search from "./components/search/Search";
+import UserButtons from "./components/userButtons/UserButtons";
+import "./index.css";
 
 function Header() {
 	const [mobileOpen, setMobileOpen] = useState(false);
@@ -33,7 +33,7 @@ function Header() {
 							</IconButton>
 						</Grid>
 						<Grid
-							size={{ xs: 0, lg: 2 }}
+							size={{ xs: 0, lg: 3 }}
 							sx={{ display: { xs: "none", lg: "block" } }}
 						>
 							<Search />
