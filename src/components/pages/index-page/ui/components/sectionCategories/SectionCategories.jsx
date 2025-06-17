@@ -1,7 +1,8 @@
-import { Button, Container, Grid } from "@mui/material";
-import { Link } from "react-router";
+import { Box, Button, Container, Grid } from "@mui/material";
+import { useNavigate } from "react-router";
 
 function SectionCategories() {
+	const navigate = useNavigate();
 	const cardItems = [
 		{
 			name: "каталог",
@@ -9,56 +10,98 @@ function SectionCategories() {
 				{
 					title: "Комнатные растения",
 					link: "/catalog/indoor-plants",
-					img: "#",
+					img: "url(src/assets/index_page/category_1.jpg)",
 				},
 				{
 					title: "Уличные растения",
 					link: "/catalog/outdoor-plants",
-					img: "#",
+					img: "url(src/assets/index_page/category_2.jpg)",
 				},
 				{
 					title: "Очищающие воздух растения",
 					link: "/catalog/air-purifying-plants",
-					img: "#",
+					img: "url(src/assets/index_page/category_3.jpg)",
 				},
 				{
 					title: "Горшки и кашпо",
 					link: "/catalog/planters-and-pots",
-					img: "#",
+					img: "url(src/assets/index_page/category_4.jpg)",
 				},
-				{ title: "Инструмент", link: "/catalog/tools", img: "#" },
+				{
+					title: "Инструмент",
+					link: "/catalog/tools",
+					img: "url(src/assets/index_page/category_5.jpg)",
+				},
 			],
 		},
 	];
 
 	return (
-		<section className="section-categories" style={{ margin: "20px 0" }}>
+		<section className="section-categories" style={{ margin: "40px 0" }}>
 			<Container maxWidth="xl">
 				<Grid container spacing={5}>
-					{cardItems?.map((card) => {
-						if (card.name == "каталог") {
-							card.items.map((item) => {
+					{cardItems?.map((obj) => {
+						if (obj.name == "каталог")
+							return obj.items.map((item, index) => {
 								return (
-									<Grid
+									<Grid key={index}
+										onClick={() => navigate(item.link)}
 										minHeight="300px"
-										size="grow"
-										sx={{
-											display: "flex",
-											flexDirection: "column",
-											justifyContent: "flex-end",
-											pb: "20px",
-											bgcolor: "#ccc",
-											backgroundImage: item.image,
-											borderRadius: "5%",
+										size={{
+											xs: 12,
+											sm: 6,
+											md: 4,
+											lg: "grow",
 										}}
 									>
-										<Link to={item.link}>
-											<Button>{item.title}</Button>
-										</Link>
+										<Box
+											sx={[
+												{
+													height: "100%",
+													display: "flex",
+													flexDirection: "column",
+													justifyContent: "flex-end",
+													alignItems: "center",
+													pb: "20px",
+													bgcolor: "transparent",
+													backgroundImage: item.img,
+													borderRadius: "5%",
+													backgroundRepeat:
+														"no-repeat",
+													backgroundSize: "cover",
+													backgroundPosition:
+														"center",
+													cursor: "pointer",
+													overflow: "hidden",
+													transition: 'all .5s ease'
+												},
+												{
+													"&:hover": {
+														boxShadow: '1px 1px 10px #666',
+														transition: 'all .5s ease'
+													},
+												},
+											]}
+										>
+											<Button
+												onClick={() =>
+													navigate(item.link)
+												}
+												variant="contained"
+												color="primary"
+												sx={{
+													opacity: "0.8",
+													width: "100%",
+													color: "#dfe7d0",
+													bgcolor: "#224229",
+												}}
+											>
+												{item.title}
+											</Button>
+										</Box>
 									</Grid>
 								);
 							});
-						}
 					})}
 				</Grid>
 			</Container>

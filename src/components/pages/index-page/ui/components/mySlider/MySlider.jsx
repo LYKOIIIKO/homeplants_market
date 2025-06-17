@@ -1,4 +1,4 @@
-import { Box, Button, Grid, Typography } from "@mui/material";
+import { Box, Button, Container, Grid, Typography } from "@mui/material";
 import { Link } from "react-router";
 import "swiper/css";
 import "swiper/css/navigation";
@@ -10,7 +10,7 @@ import MySliderBtns from "./MySliderBtns";
 
 export default function MySlider() {
 	return (
-		<section className="slider-homepage">
+		<section className="section-slider_homepage">
 			<Box sx={{ position: "relative" }}>
 				<Swiper
 					slidesPerView={1}
@@ -27,19 +27,23 @@ export default function MySlider() {
 					}}
 					loop={true}
 					modules={[Pagination, Navigation, Keyboard]}
-					className="mySwiper"
+					className="slider_homepage"
 				>
 					<MySliderBtns />
-					<SwiperSlide>
-						<Box className="slide-container">
+					<SwiperSlide className="slide_homepage">
+						<Container maxWidth="xl" className="slide-container">
 							<Grid container direction={"column"} spacing={4}>
 								<Grid>
 									<Box className="slide-hidebox">
 										<Typography
-											className="slide-text"
+											className="slide_homepage_text"
 											letterSpacing={3}
 											textTransform="uppercase"
 											variant="h6"
+											fontSize={{
+												xs: "1rem",
+												md: "1.4285714285714284rem",
+											}}
 										>
 											каталог
 										</Typography>
@@ -56,15 +60,19 @@ export default function MySlider() {
 								>
 									<Box className="slide-hidebox">
 										<Typography
-											className="slide-text"
+											className="slide_homepage_text"
 											variant="h2"
+											fontSize={{
+												xs: "2rem",
+												md: "4.285714285714286rem",
+											}}
 										>
 											Новые поступления
 										</Typography>
 									</Box>
 									<Box className="slide-hidebox">
 										<Typography
-											className="slide-text"
+											className="slide_homepage_text"
 											variant="body2"
 										>
 											Скидка до 30%
@@ -73,13 +81,17 @@ export default function MySlider() {
 								</Grid>
 								<Grid>
 									<Box className="slide-hidebox">
-										<Box className="slide-text">
+										<Box className="slide_homepage_text">
 											<Link to="/catalog">
 												<Button
 													size="large"
-													className="slide-text"
+													className="slide_homepage_text"
 													variant="contained"
-													sx={{ color: "#dfe7d0" }}
+													sx={{
+														color: "#dfe7d0",
+														bgcolor: "#224229",
+														borderRadius: "20px",
+													}}
 												>
 													каталог
 												</Button>
@@ -88,18 +100,22 @@ export default function MySlider() {
 									</Box>
 								</Grid>
 							</Grid>
-						</Box>
+						</Container>
 					</SwiperSlide>
-					<SwiperSlide>
-						<Box className="slide-container">
+					<SwiperSlide className="slide_homepage">
+						<Container maxWidth="xl" className="slide-container">
 							<Grid container direction={"column"} spacing={4}>
 								<Grid>
 									<Box className="slide-hidebox">
 										<Typography
-											className="slide-text"
+											className="slide_homepage_text"
 											letterSpacing={3}
 											textTransform="uppercase"
 											variant="h6"
+											fontSize={{
+												xs: "1rem",
+												md: "1.4285714285714284rem",
+											}}
 										>
 											блог
 										</Typography>
@@ -115,15 +131,19 @@ export default function MySlider() {
 								>
 									<Box className="slide-hidebox">
 										<Typography
-											className="slide-text"
+											className="slide_homepage_text"
 											variant="h2"
+											fontSize={{
+												xs: "2rem",
+												md: "4.285714285714286rem",
+											}}
 										>
 											Уход за растениями
 										</Typography>
 									</Box>
 									<Box className="slide-hidebox">
 										<Typography
-											className="slide-text"
+											className="slide_homepage_text"
 											variant="body2"
 										>
 											Узнайте как правильно ухаживать за
@@ -133,12 +153,16 @@ export default function MySlider() {
 								</Grid>
 								<Grid>
 									<Box className="slide-hidebox">
-										<Box className="slide-text">
+										<Box className="slide_homepage_text">
 											<Link to="/catalog">
 												<Button
 													size="large"
 													variant="contained"
-													sx={{ color: "#dfe7d0" }}
+													sx={{
+														color: "#dfe7d0",
+														bgcolor: "#224229",
+														borderRadius: "20px",
+													}}
 												>
 													блог
 												</Button>
@@ -147,7 +171,7 @@ export default function MySlider() {
 									</Box>
 								</Grid>
 							</Grid>
-						</Box>
+						</Container>
 					</SwiperSlide>
 				</Swiper>
 			</Box>
