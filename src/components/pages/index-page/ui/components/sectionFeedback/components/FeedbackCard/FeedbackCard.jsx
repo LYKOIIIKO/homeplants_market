@@ -43,9 +43,9 @@ function FeedbackCard(props) {
 			/>
 
 			<Box className={s.wrapperUserName}>
-				<Typography>{item.userName}{`  `}  </Typography>
-				<Typography>
-					{`  `} / {item.userJob}
+				<Typography variant="body1" fontWeight='bold'>{item.userName}</Typography>
+				<Typography variant="subtitle2" >
+					/ {item.userJob}
 				</Typography>
 			</Box>
 		</Paper>

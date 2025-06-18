@@ -1,11 +1,10 @@
-import { Box, IconButton, InputBase, Paper, TextField } from "@mui/material";
 import SearchIcon from "@mui/icons-material/Search";
+import { Box, IconButton, InputBase, Paper } from "@mui/material";
 
 function Search() {
 	return (
 		<Paper
-			variant="elevation"
-			elevation={1}
+			variant="outlined"
 			sx={{ display: "flex", alignItems: "center", py: { xs: 2, lg: 0 } }}
 		>
 			<IconButton type="button" sx={{ p: "10px" }} aria-label="search">

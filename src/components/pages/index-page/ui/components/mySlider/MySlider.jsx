@@ -30,8 +30,8 @@ export default function MySlider() {
 					className="slider_homepage"
 				>
 					<MySliderBtns />
-					<SwiperSlide className="slide_homepage">
-						<Container maxWidth="xl" className="slide-container">
+					<SwiperSlide className="slide_homepage slide_homepage_1">
+						<Container maxWidth="xl" className="slide_container">
 							<Grid container direction={"column"} spacing={4}>
 								<Grid>
 									<Box className="slide-hidebox">
@@ -87,9 +87,8 @@ export default function MySlider() {
 													size="large"
 													className="slide_homepage_text"
 													variant="contained"
+													color="primary"
 													sx={{
-														color: "#dfe7d0",
-														bgcolor: "#224229",
 														borderRadius: "20px",
 													}}
 												>
@@ -102,8 +101,8 @@ export default function MySlider() {
 							</Grid>
 						</Container>
 					</SwiperSlide>
-					<SwiperSlide className="slide_homepage">
-						<Container maxWidth="xl" className="slide-container">
+					<SwiperSlide className="slide_homepage slide_homepage_2">
+						<Container maxWidth="xl" className="slide_container">
 							<Grid container direction={"column"} spacing={4}>
 								<Grid>
 									<Box className="slide-hidebox">
@@ -158,9 +157,8 @@ export default function MySlider() {
 												<Button
 													size="large"
 													variant="contained"
+													color="primary"
 													sx={{
-														color: "#dfe7d0",
-														bgcolor: "#224229",
 														borderRadius: "20px",
 													}}
 												>

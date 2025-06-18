@@ -18,7 +18,7 @@ function Header() {
 
 	return (
 		<>
-			<AppBar color="inherit" position="sticky" variant="outlined">
+			<AppBar color="inherit" position="sticky" variant="outlined" className="site_header">
 				<Container maxWidth="xl">
 					<Grid container alignItems="center">
 						<Grid size={{ xs: 3, lg: 0 }}>

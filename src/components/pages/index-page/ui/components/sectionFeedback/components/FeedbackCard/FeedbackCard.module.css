@@ -4,9 +4,12 @@
 	flex-direction: column;
 	gap: 20px;
 	align-items: center;
-	padding: 10px;
+	padding: 20px 10px;
+	background-color: var(--root-lightgreen) !important;
 }
 
 .wrapperUserName {
 	display: flex;
+	gap: 5px;
+	align-items: center;
 }

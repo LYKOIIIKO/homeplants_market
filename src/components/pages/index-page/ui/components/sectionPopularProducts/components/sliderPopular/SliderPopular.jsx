@@ -16,29 +16,25 @@ function SliderPopular(props) {
 					nextEl: "slider_bottom_btn-prev",
 					prevEl: "slider_bottom_btn-next",
 				}}
-				keyboard={{
-					enabled: true,
-				}}
 				loop={true}
 				modules={[Navigation, Keyboard]}
 				breakpoints={{
-					"1200": {
+					1200: {
 						slidesPerView: 4,
 						spaceBetween: 40,
 					},
-					"900": {
+					900: {
 						slidesPerView: 3,
 						spaceBetween: 40,
 					},
-					"600": {
+					600: {
 						slidesPerView: 2,
 						spaceBetween: 40,
 					},
-					"0": {
+					0: {
 						slidesPerView: 1,
 						spaceBetween: 20,
 					},
-					
 				}}
 			>
 				<SwiperSlide>

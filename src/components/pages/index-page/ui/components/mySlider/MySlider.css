@@ -16,17 +16,21 @@
 	align-items: center;
 }
 
-.slide_homepage:nth-child(1) {
+.slide_homepage_1 {
 	background-image: url(../../../../../../assets/index_page/mySlider_1.jpg);
 	background-repeat: no-repeat;
 	background-size: cover;
 	background-position: 0 38%;
 }
-.slide_homepage:nth-child(2) {
+.slide_homepage_2 {
 	background-image: url(../../../../../../assets/index_page/mySlider_2.jpg);
 	background-repeat: no-repeat;
 	background-size: cover;
 	background-position: 0 30%;
+}
+
+.slide_container {
+	overflow: hidden;
 }
 
 .swiper-slide .slide_homepage_text {

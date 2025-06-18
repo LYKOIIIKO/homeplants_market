@@ -1,4 +1,4 @@
-import { Keyboard, Navigation } from "swiper/modules";
+import { Navigation } from "swiper/modules";
 import { Swiper, SwiperSlide } from "swiper/react";
 import SliderBottomBtns from "../../../../components/sectionPopularProducts/components/sliderPopular/SliderBottomBtns";
 import FeedbackCard from "../FeedbackCard/FeedbackCard";
@@ -16,27 +16,23 @@ function SliderFeedback(props) {
 					nextEl: "slider_bottom_btn-prev",
 					prevEl: "slider_bottom_btn-next",
 				}}
-				keyboard={{
-					enabled: true,
-				}}
 				loop={true}
-				modules={[Navigation, Keyboard]}
+				modules={[Navigation]}
 				breakpoints={{
-					"1200": {
+					1200: {
 						slidesPerView: 3,
 						spaceBetween: 50,
 					},
-					
-					"900": {
+
+					900: {
 						slidesPerView: 2,
 						spaceBetween: 50,
 					},
-					"0": {
+					0: {
 						slidesPerView: 1,
 					},
-					
 				}}
-			> 
+			>
 				<SwiperSlide>
 					<FeedbackCard item={item} />
 				</SwiperSlide>

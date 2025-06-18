@@ -6,7 +6,7 @@ function SectionFeedback() {
   const feedback = {userName:'Alex Stivenson', userJob: 'Designer', userAvatar: '#', text: 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Earum dolor doloribus quam error voluptas doloremque tempora. Animi dolor doloremque corrupti repudiandae eaque nihil rerum magnam!', userRating: '5'}
 
 	return (
-		<section className="section-feedback">
+		<section className="section-feedback" style={{ margin: "40px 0" }}>
 			<Container maxWidth="xl">
 				<Box textAlign="center" mb={5}>
 					<Typography variant="h5" textTransform="uppercase">
