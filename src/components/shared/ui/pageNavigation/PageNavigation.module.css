@@ -1,0 +1,8 @@
+.container {
+	background-color: var(--root-bg-lightgreen);
+	padding: 20px 0;
+}
+
+.navLink {
+	cursor: pointer;
+}

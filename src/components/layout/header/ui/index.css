@@ -5,3 +5,8 @@ a.active div::before {
 .site_header {
 	background-color: var(--root-bg-light) !important;
 }
+
+a {
+	text-decoration: none !important;
+	color: inherit;
+}

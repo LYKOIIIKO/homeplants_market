@@ -1,6 +1,12 @@
+import PageNavigation from "../../../shared/ui/pageNavigation/PageNavigation";
+import CatalogList from "./components/catalogList/CatalogList";
+
 function CatalogPage() {
-  return (
-	<div>CatalogPage</div>
-  )
+	return (
+		<>
+			<PageNavigation linkTo={'/catalog'} title={'Каталог'} />
+			<CatalogList />
+		</>
+	);
 }
-export default CatalogPage
+export default CatalogPage;

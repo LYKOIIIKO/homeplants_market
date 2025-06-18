@@ -1,5 +1,6 @@
 .navElem {
 	position: relative;
+	
 }
 
 .navElem:hover > div {
@@ -38,6 +39,11 @@
 	box-shadow: 0px 2px 4px 0px rgba(0, 0, 0, 0.05);
 	z-index: 5;
 	transition: all ease 0.5s !important;
+}
+
+.navLink {
+	text-decoration: none !important;
+	color: inherit;
 }
 
 .navLink:hover {

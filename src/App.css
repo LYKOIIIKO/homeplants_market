@@ -1,11 +1,7 @@
 :root {
 	--root-bg-light: #fcf9f3;
+	--root-bg-lightgreen: #f7f2e8;
 	--root-lightgreen: #dfe7d0;
-}
-
-a {
-	text-decoration: none !important;
-	color: inherit;
 }
 
 body {

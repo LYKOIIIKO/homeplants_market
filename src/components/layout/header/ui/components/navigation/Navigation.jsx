@@ -1,6 +1,6 @@
+import ArrowDropDownIcon from "@mui/icons-material/ArrowDropDown";
 import { Box, List, ListItem, Paper, Typography } from "@mui/material";
 import { Link, NavLink } from "react-router";
-import ArrowDropDownIcon from "@mui/icons-material/ArrowDropDown";
 import Logo from "../../../../../../assets/logo/Logo";
 import styles from "./Navigation.module.css";
 
@@ -74,7 +74,7 @@ function Navigation() {
 												(item, index) => {
 													return (
 														<ListItem key={index}>
-															<Link
+															<Link className={styles.navLink}
 																to={item.link}
 															>
 																<Typography
