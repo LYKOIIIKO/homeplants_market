@@ -40,9 +40,9 @@ function CatalogList() {
 								m: "20px 0",
 								display: "flex",
 								justifyContent: "space-between",
-								alignItems: {xs:'flex-start', sm:"center"},
-								flexDirection:{xs:'column', sm:'row'},
-								gap:3
+								alignItems: { xs: "flex-start", sm: "center" },
+								flexDirection: { xs: "column", sm: "row" },
+								gap: 3,
 							}}
 						>
 							<Button
@@ -62,19 +62,19 @@ function CatalogList() {
 							sx={{ m: "20px 0" }}
 							spacing={5}
 						>
-							<Grid size={{ xs:12,sm: 6, lg: 4, xl: 3 }}>
+							<Grid size={{ xs: 12, sm: 6, lg: 4, xl: 3 }}>
 								<ProductCard product={product} />
 							</Grid>
-							<Grid size={{ xs:12,sm: 6, lg: 4, xl: 3 }}>
+							<Grid size={{ xs: 12, sm: 6, lg: 4, xl: 3 }}>
 								<ProductCard product={product} />
 							</Grid>
-							<Grid size={{ xs:12,sm: 6, lg: 4, xl: 3 }}>
+							<Grid size={{ xs: 12, sm: 6, lg: 4, xl: 3 }}>
 								<ProductCard product={product} />
 							</Grid>
-							<Grid size={{ xs:12,sm: 6, lg: 4, xl: 3 }}>
+							<Grid size={{ xs: 12, sm: 6, lg: 4, xl: 3 }}>
 								<ProductCard product={product} />
 							</Grid>
-							<Grid size={{ xs:12,sm: 6, lg: 4, xl: 3 }}>
+							<Grid size={{ xs: 12, sm: 6, lg: 4, xl: 3 }}>
 								<ProductCard product={product} />
 							</Grid>
 						</Grid>

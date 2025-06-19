@@ -2,6 +2,7 @@ import {
   Box,
   Button,
   Container,
+  Divider,
   List,
   ListItem,
   Typography,
@@ -18,7 +19,7 @@ function CartPage() {
 	};
 
 	return (
-		<Box>
+		<Box my={3}>
 			<Container maxWidth="xl">
 				<Typography variant="h4" textAlign="center" m={2}>
 					Корзина
@@ -27,6 +28,11 @@ function CartPage() {
 					<ListItem>
 						<CartItem item={product} />
 					</ListItem>
+					<Divider />
+					<ListItem>
+						<CartItem item={product} />
+					</ListItem>
+					<Divider />
 				</List>
 				<Box
 					sx={{
