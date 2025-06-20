@@ -46,7 +46,7 @@ function CartItem({ item }) {
 				px={1}
 				sx={{ order: { xs: 2, lg: 3 }, wordBreak: "break-all" }}
 			>
-				<Typography variant="body1" onClick={() => navigate(item.link)}>
+				<Typography className={s.link} variant="body1" onClick={() => navigate(item.link)}>
 					{item.title}
 				</Typography>
 			</Grid>

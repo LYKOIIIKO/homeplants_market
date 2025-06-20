@@ -11,7 +11,7 @@ function PageNotFound() {
 				<div className={s.img}>
 					<img
 						className={s.imgCat}
-						src="./src/assets/404_page/cat.png"
+						src="/src/assets/404_page/cat.png"
 						alt="cat"
 					/>
 					<h1 className={s.okak}>ОКАК</h1>

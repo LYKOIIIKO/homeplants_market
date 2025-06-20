@@ -45,7 +45,7 @@ function CatalogFilter() {
 			],
 		},
 	];
-	
+
 	return (
 		<Box>
 			<Box mb={3}>
@@ -72,6 +72,7 @@ function CatalogFilter() {
 										return item.items.map((i, index) => {
 											return (
 												<FormControlLabel
+													key={index}
 													value={index}
 													control={<Radio />}
 													label={i.title}
@@ -93,7 +94,7 @@ function CatalogFilter() {
 					>
 						<Typography textTransform="uppercase">Цена</Typography>
 					</AccordionSummary>
-					<AccordionDetails sx={{ py: 2, px:5}} >
+					<AccordionDetails sx={{ py: 2, px: 5 }}>
 						<Slider
 							aria-label="filter-price"
 							value={price}
@@ -102,7 +103,9 @@ function CatalogFilter() {
 							onChange={handleChangePrice}
 							valueLabelDisplay="auto"
 						/>
-						<Typography textAlign='center'>{price[0]} руб. - {price[1]} руб.</Typography>
+						<Typography textAlign="center">
+							{price[0]} руб. - {price[1]} руб.
+						</Typography>
 					</AccordionDetails>
 				</Accordion>
 			</Box>
