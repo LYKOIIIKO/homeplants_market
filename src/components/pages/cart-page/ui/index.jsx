@@ -1,22 +1,21 @@
 import {
-  Box,
-  Button,
-  Container,
-  Divider,
-  List,
-  ListItem,
-  Typography,
+	Box,
+	Button,
+	Container,
+	Divider,
+	List,
+	ListItem,
+	Typography,
 } from "@mui/material";
+import { observer } from "mobx-react-lite";
+import cartStore from "../../../../store/cartStore";
+import catalogStore from "../../../../store/catalogStore";
 import CartItem from "./components/cartItem/CartItem";
 
 function CartPage() {
-	const product = {
-		title: "product",
-		img: "/src/assets/catalog_page/popular_products/product_1.webp",
-		imgHover: "/src/assets/catalog_page/popular_products/product_1-2.webp",
-		link: "/catalog",
-		price: "100",
-	};
+	const { cart } = cartStore;
+
+	const { products } = catalogStore;
 
 	return (
 		<Box my={3}>
@@ -25,13 +24,20 @@ function CartPage() {
 					Корзина
 				</Typography>
 				<List>
-					<ListItem>
-						<CartItem item={product} />
-					</ListItem>
-					<Divider />
-					<ListItem>
-						<CartItem item={product} />
-					</ListItem>
+					{cart?.map((item) => {
+						return products?.map((product) => {
+							if (product.id == item.id)
+								return (
+									<ListItem key={product.id}>
+										<CartItem
+											item={product}
+											count={item.count}
+										/>
+									</ListItem>
+								);
+						});
+					})}
+
 					<Divider />
 				</List>
 				<Box
@@ -43,7 +49,15 @@ function CartPage() {
 					}}
 				>
 					<Typography variant="h5" textTransform="uppercase">
-						total
+						total{" "}
+						{cart?.reduce((acc, item) => {
+							let value = products?.find((product) => {
+								if (product.id == item.id) return product;
+							});
+
+							return (acc += +value?.price * +item.count);
+						}, 0)}{" "} 
+						pcs.
 					</Typography>
 					<Button variant="contained" color="primary">
 						оформить заказ
@@ -53,4 +67,4 @@ function CartPage() {
 		</Box>
 	);
 }
-export default CartPage;
+export default observer(CartPage);

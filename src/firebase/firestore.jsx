@@ -154,11 +154,11 @@ function Firestore() {
 		}
 	};
 
-	// const deleteAllTasks = () => {
-	// 	tasks.map((item) => {
-	// 		deleteTask(item.id);
-	// 	});
-	// };
+	const deleteAllTasks = (data) => {
+		data.map((item) => {
+			deleteTask(item.id);
+		});
+	};
 	return <Button onClick={addDocument}>sendCollection</Button>;
 }
 export default Firestore;

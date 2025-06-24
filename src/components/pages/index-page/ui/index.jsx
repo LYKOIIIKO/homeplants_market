@@ -4,7 +4,7 @@ import SectionFeedback from './components/sectionFeedback/SectionFeedback';
 import SectionNews from "./components/sectionNews/SectionNews";
 import SectionPopularProducts from "./components/sectionPopularProducts/SectionPopularProducts";
 
-function IndexPage() {
+function IndexPage() {	
 	return (
 		<>
 			<MySlider />

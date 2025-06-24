@@ -1,10 +1,12 @@
 import ClearIcon from "@mui/icons-material/Clear";
 import { Grid, IconButton, Typography } from "@mui/material";
+import { observer } from "mobx-react-lite";
 import { useNavigate } from "react-router";
+import cartStore from "../../../../../../store/cartStore";
 import CartCounter from "../cartCounter/CartCounter";
 import s from "./CartItem.module.css";
 
-function CartItem({ item }) {
+function CartItem({ item, count }) {
 	const navigate = useNavigate();
 
 	return (
@@ -23,7 +25,7 @@ function CartItem({ item }) {
 					order: { xs: 3, lg: 1 },
 				}}
 			>
-				<IconButton>
+				<IconButton onClick={() => cartStore.removeItem(item.id)}>
 					<ClearIcon />
 				</IconButton>
 			</Grid>
@@ -44,9 +46,13 @@ function CartItem({ item }) {
 			<Grid
 				size={{ xs: 8, lg: "grow" }}
 				px={1}
-				sx={{ order: { xs: 2, lg: 3 }, wordBreak: "break-all" }}
+				sx={{ order: { xs: 2, lg: 3 }, wordBreak: "break-word" }}
 			>
-				<Typography className={s.link} variant="body1" onClick={() => navigate(item.link)}>
+				<Typography
+					className={s.link}
+					variant="body1"
+					onClick={() => navigate(item.link)}
+				>
 					{item.title}
 				</Typography>
 			</Grid>
@@ -58,7 +64,7 @@ function CartItem({ item }) {
 					order: { xs: 4, lg: 4 },
 				}}
 			>
-				<CartCounter />
+				<CartCounter itemId={item.id} count={count} />
 			</Grid>
 			<Grid
 				size={{ xs: 12, lg: 2 }}
@@ -68,9 +74,9 @@ function CartItem({ item }) {
 					order: { xs: 5, lg: 5 },
 				}}
 			>
-				<Typography variant="body1">{item.price} руб.</Typography>
+				<Typography variant="body1">{item.price * count} руб.</Typography>
 			</Grid>
 		</Grid>
 	);
 }
-export default CartItem;
+export default observer(CartItem);

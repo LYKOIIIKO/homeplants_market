@@ -5,7 +5,7 @@ import SliderBottomBtns from "./SliderBottomBtns";
 import "./SliderPopular.css";
 
 function SliderPopular(props) {
-	const { product } = props;
+	const { products } = props;
 	return (
 		<>
 			<Swiper
@@ -37,21 +37,14 @@ function SliderPopular(props) {
 					},
 				}}
 			>
-				<SwiperSlide>
-					<ProductCard product={product} />
-				</SwiperSlide>
-				<SwiperSlide>
-					<ProductCard product={product} />
-				</SwiperSlide>
-				<SwiperSlide>
-					<ProductCard product={product} />
-				</SwiperSlide>
-				<SwiperSlide>
-					<ProductCard product={product} />
-				</SwiperSlide>
-				<SwiperSlide>
-					<ProductCard product={product} />
-				</SwiperSlide>
+				{products?.map((item) => {
+					return (
+						<SwiperSlide>
+							<ProductCard key={item.id} product={item} />
+						</SwiperSlide>
+					);
+				})}
+
 				<SliderBottomBtns />
 			</Swiper>
 		</>

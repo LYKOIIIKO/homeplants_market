@@ -1,7 +1,9 @@
 import { ThemeProvider, createTheme } from "@mui/material/styles";
+import { observer } from "mobx-react-lite";
 import { BrowserRouter } from "react-router";
 import "./App.css";
 import Layout from "./components/layout";
+import catalogStore from "./store/catalogStore";
 
 const theme = createTheme({
 	palette: {
@@ -33,6 +35,7 @@ const theme = createTheme({
 });
 
 function App() {
+	catalogStore.getAll();
 	return (
 		<BrowserRouter>
 			<ThemeProvider theme={theme}>
@@ -42,4 +45,4 @@ function App() {
 	);
 }
 
-export default App;
+export default observer(App);
