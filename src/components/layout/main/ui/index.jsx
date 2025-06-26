@@ -6,6 +6,7 @@ import AccountPage from "../../../pages/account-page";
 import BlogPage from "../../../pages/blog-page";
 import CartPage from "../../../pages/cart-page";
 import CatalogPage from "../../../pages/catalog-page";
+import CheckoutPage from "../../../pages/checkout-page/ui";
 import DeliveryPage from "../../../pages/delivery-page";
 import IndexPage from "../../../pages/index-page";
 import PayPage from "../../../pages/pay-page";
@@ -45,6 +46,7 @@ function Main() {
 				<Route path="delivery" element={<DeliveryPage />} />
 				<Route path="about" element={<AboutPage />} />
 				<Route path="cart" element={<CartPage />} />
+				<Route path="checkout" element={<CheckoutPage />} />
 				<Route path="account" element={<AccountPage />} />
 				<Route path="wishlist" element={<WishlistPage />} />
 				<Route path="pay" element={<PayPage />} />

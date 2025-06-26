@@ -8,6 +8,7 @@ import {
 	Typography,
 } from "@mui/material";
 import { observer } from "mobx-react-lite";
+import { useNavigate } from "react-router";
 import cartStore from "../../../../store/cartStore";
 import catalogStore from "../../../../store/catalogStore";
 import CartItem from "./components/cartItem/CartItem";
@@ -16,6 +17,8 @@ function CartPage() {
 	const { cart } = cartStore;
 
 	const { products } = catalogStore;
+	
+	const navigate = useNavigate()
 
 	return (
 		<Box my={3}>
@@ -47,7 +50,7 @@ function CartPage() {
 								}, 0)}{" "}
 								руб.
 							</Typography>
-							<Button variant="contained" color="primary">
+							<Button variant="contained" color="primary" onClick={() => navigate('/checkout')}>
 								оформить заказ
 							</Button>
 						</Box>
