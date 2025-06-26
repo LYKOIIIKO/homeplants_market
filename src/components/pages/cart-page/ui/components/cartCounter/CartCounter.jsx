@@ -18,11 +18,11 @@ export default function CartCounter({itemId, count}) {
 			className={styles.Field}
 		>
 			<NumberField.Group className={styles.Group}>
-				<NumberField.Decrement className={styles.Decrement} onClick={() => cartStore.getItemCount(itemId)}>
+				<NumberField.Decrement className={styles.Decrement} onClick={() => cartStore.decrementItemCount(itemId)}>
 					<RemoveIcon fontSize="small" />
 				</NumberField.Decrement>
 				<NumberField.Input className={styles.Input} />
-				<NumberField.Increment className={styles.Increment} onClick={() => cartStore.setItemCount(itemId)}>
+				<NumberField.Increment className={styles.Increment} onClick={() => cartStore.incrementItemCount(itemId)}>
 					<AddIcon fontSize="small" />
 				</NumberField.Increment>
 			</NumberField.Group>

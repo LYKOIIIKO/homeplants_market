@@ -1,35 +1,23 @@
-import { collection, query } from "firebase/firestore";
-import { useEffect, useState } from "react";
-import { useCollection } from "react-firebase-hooks/firestore";
+import { collection, getDocs } from "firebase/firestore";
 import { db } from "../firebase/initial";
-
-function CatalogService() {
-	return [666,555,444]
-}
-
-function GetCatalog() {
-	const [products, setProducts] = useState([]);
-	
-	const [data] = useCollection(query(collection(db, "catalog")));
-	
-	useEffect(() => {
-		const newProducts = [];
-		data?.forEach((item) => {
-			if (Object.keys(item.data()).length != 0) {
-				const product = {
-					id: item.id,
-					...item.data(),
+class CatalogService {
+	async findAll() {
+		let products = [];
+		const querySnapshot = await getDocs(collection(db, "catalog"));
+		querySnapshot.forEach((doc) => {
+			if (Object.keys(doc.data()).length != 0) {
+				let product = {
+					id: doc.id,
+					...doc.data(),
 				};
-				newProducts.push(product);
+				products.push(product);
 			}
 		});
-		setProducts(newProducts);
-	}, [data]);
-
-	return products
+		return products;
+	}
 }
 
+const catalogService = new CatalogService();
 
-
-export { CatalogService, GetCatalog };
+export { catalogService };
 

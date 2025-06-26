@@ -30,8 +30,13 @@ function Main() {
 			<ScrollToTop />
 			<Routes>
 				<Route index element={<IndexPage />} />
-				<Route path="/catalog" element={<CatalogPage />} />
-				<Route path="/catalog/:id" element={<ProductPage />} />
+				<Route path="catalog">
+					<Route index element={<CatalogPage />} />
+					<Route
+						path=":categoryId/:productId"
+						element={<ProductPage />}
+					/>
+				</Route>
 				<Route path="/blog" element={<BlogPage />} />
 				<Route path="/delivery" element={<DeliveryPage />} />
 				<Route path="/about" element={<AboutPage />} />

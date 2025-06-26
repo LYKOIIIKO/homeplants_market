@@ -33,9 +33,7 @@ class CartStore {
 
 			localStorage.setItem("userCart", JSON.stringify(this.cart));
 		} else {
-			let str = JSON.stringify(this.cart);
-
-			if (str.indexOf(productId) == -1) {
+			if (!this.getItemStatus(productId)) {
 				this.cart = [...this.cart, { id: productId, count: 1 }];
 
 				localStorage.setItem("userCart", JSON.stringify(this.cart));
@@ -48,7 +46,13 @@ class CartStore {
 		localStorage.setItem("userCart", JSON.stringify(this.cart));
 	}
 
-	setItemCount(id) {
+	getItemCount(id) {
+		return this.cart.map((item) => {
+			if (item.id == id) return item.count;
+		});
+	}
+
+	incrementItemCount(id) {
 		this.cart = this.cart.map((item) => {
 			if (item.id == id) item.count++;
 			return item;
@@ -56,12 +60,18 @@ class CartStore {
 		localStorage.setItem("userCart", JSON.stringify(this.cart));
 	}
 
-	getItemCount(id) {
+	decrementItemCount(id) {
 		this.cart = this.cart.map((item) => {
 			if (item.id == id) item.count--;
 			return item;
 		});
 		localStorage.setItem("userCart", JSON.stringify(this.cart));
+	}
+
+	getItemStatus(productId) {
+		let str = JSON.stringify(this.cart);
+
+		return str.includes(productId);
 	}
 }
 

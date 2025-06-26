@@ -1,4 +1,4 @@
-import { Keyboard, Navigation } from "swiper/modules";
+import { Navigation } from "swiper/modules";
 import { Swiper, SwiperSlide } from "swiper/react";
 import ProductCard from "../../../../../../catalog-page/ui/components/productCard/ProductCard";
 import SliderBottomBtns from "./SliderBottomBtns";
@@ -17,7 +17,7 @@ function SliderPopular(props) {
 					prevEl: "slider_bottom_btn-next",
 				}}
 				loop={true}
-				modules={[Navigation, Keyboard]}
+				modules={[Navigation]}
 				breakpoints={{
 					1200: {
 						slidesPerView: 4,

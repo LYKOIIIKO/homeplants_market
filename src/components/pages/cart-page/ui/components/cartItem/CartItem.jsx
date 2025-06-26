@@ -39,8 +39,8 @@ function CartItem({ item, count }) {
 			>
 				<img
 					className={s.image}
-					src={item.img}
-					onClick={() => navigate(item.link)}
+					src={item.img1}
+					onClick={() => navigate(`/catalog/${item.category}/${item.id}`)}
 				/>
 			</Grid>
 			<Grid
@@ -51,7 +51,7 @@ function CartItem({ item, count }) {
 				<Typography
 					className={s.link}
 					variant="body1"
-					onClick={() => navigate(item.link)}
+					onClick={() => navigate(`/catalog/${item.category}/${item.id}`)}
 				>
 					{item.title}
 				</Typography>

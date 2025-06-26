@@ -1,20 +1,24 @@
 import { makeAutoObservable } from "mobx";
-import { GetCatalog } from "../services/catalogService";
+import { catalogService } from "../services/catalogService";
 
 class CatalogStore {
 	products = [];
 
 	constructor() {
 		makeAutoObservable(this);
+		this.getAll();
 	}
 
-	getAll() {
-		const data = GetCatalog();
-		this.setAll(data);		
+	async getAll() {
+		const resp = await catalogService.findAll();
+		this.setAll(resp);
 	}
-
 	setAll(products) {
 		this.products = products;
+	}
+
+	async getProduct(id) {
+		return await this.products.find((item) => item.id == id);
 	}
 }
 

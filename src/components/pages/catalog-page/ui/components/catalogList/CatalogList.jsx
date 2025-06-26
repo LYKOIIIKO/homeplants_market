@@ -1,4 +1,5 @@
 import { Button, Container, Grid, Typography } from "@mui/material";
+import { observer } from "mobx-react-lite";
 import { useState } from "react";
 import catalogStore from "../../../../../../store/catalogStore";
 import CatalogFilter from "../catalogFilter/CatalogFilter";
@@ -80,4 +81,4 @@ function CatalogList() {
 		</section>
 	);
 }
-export default CatalogList;
+export default observer(CatalogList);

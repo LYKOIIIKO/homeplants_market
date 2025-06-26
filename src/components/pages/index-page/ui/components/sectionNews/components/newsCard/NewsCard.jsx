@@ -40,14 +40,7 @@ function NewsCard({ item }) {
 			</CardContent>
 			<CardActions sx={{ display: "flex", justifyContent: "center" }}>
 				<Link to={item.link}>
-					<Button
-						variant="contained"
-						color="primary"
-						size="large"
-						sx={{
-							borderRadius: "20px",
-						}}
-					>
+					<Button variant="contained" color="primary" size="large">
 						читать
 					</Button>
 				</Link>

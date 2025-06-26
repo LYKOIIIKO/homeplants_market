@@ -88,9 +88,6 @@ export default function MySlider() {
 													className="slide_homepage_text"
 													variant="contained"
 													color="primary"
-													sx={{
-														borderRadius: "20px",
-													}}
 												>
 													каталог
 												</Button>
@@ -158,9 +155,6 @@ export default function MySlider() {
 													size="large"
 													variant="contained"
 													color="primary"
-													sx={{
-														borderRadius: "20px",
-													}}
 												>
 													блог
 												</Button>

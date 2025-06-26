@@ -3,7 +3,6 @@ import { observer } from "mobx-react-lite";
 import { BrowserRouter } from "react-router";
 import "./App.css";
 import Layout from "./components/layout";
-import catalogStore from "./store/catalogStore";
 
 const theme = createTheme({
 	palette: {
@@ -19,7 +18,7 @@ const theme = createTheme({
 		},
 		text: {
 			primary: "#0a4e41",
-			secondary: "#0a4e41",
+			secondary: "#008060"
 		},
 	},
 	typography: {
@@ -35,7 +34,6 @@ const theme = createTheme({
 });
 
 function App() {
-	catalogStore.getAll();
 	return (
 		<BrowserRouter>
 			<ThemeProvider theme={theme}>

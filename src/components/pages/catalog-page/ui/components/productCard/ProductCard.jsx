@@ -1,4 +1,5 @@
 import FavoriteBorderIcon from "@mui/icons-material/FavoriteBorder";
+import ShoppingCartIcon from '@mui/icons-material/ShoppingCart';
 import ShoppingCartOutlinedIcon from "@mui/icons-material/ShoppingCartOutlined";
 import { Box, IconButton, Paper, Typography } from "@mui/material";
 import { observer } from "mobx-react-lite";
@@ -10,19 +11,27 @@ function ProductCard(props) {
 	const { product } = props;
 
 	const navigate = useNavigate();
+
+	const handlerCart = (id) => {
+	  if (!cartStore.getItemStatus(id)) {
+		cartStore.setCart(id)
+	  } else {
+		cartStore.removeItem(id)
+	  }
+	}
 	return (
 		<Box className={styles.container}>
 			<Paper className={styles.wrapperImg} variant="outlined">
 				<img
-					onClick={() => navigate(product.link)}
+					onClick={() => navigate(`/catalog/${product.category}/${product.id}`)}
 					className={styles.productImg}
-					src={product.img}
+					src={product.img1}
 					alt={product.title}
 				/>
 				<img
-					onClick={() => navigate(product.link)}
+					onClick={() => navigate(`/catalog/${product.category}/${product.id}`)}
 					className={styles.productImgHover}
-					src={product.imgHover}
+					src={product.img2}
 					alt={product.title}
 				/>
 				<Paper
@@ -38,14 +47,15 @@ function ProductCard(props) {
 					<IconButton>
 						<FavoriteBorderIcon />
 					</IconButton>
-					<IconButton onClick={() => cartStore.setCart(product.id)}>
-						<ShoppingCartOutlinedIcon />
+					<IconButton onClick={() => handlerCart(product.id)}>
+						{cartStore.getItemStatus(product.id) ? <ShoppingCartIcon /> : <ShoppingCartOutlinedIcon />}
+						
 					</IconButton>
 				</Paper>
 			</Paper>
 			<Box className={styles.wrapperInfo}>
 				<Typography
-					onClick={() => navigate(product.link)}
+					onClick={() => navigate(`/catalog/${product.category}/${product.id}`)}
 					className={styles.productTitle}
 					variant="body1"
 				>

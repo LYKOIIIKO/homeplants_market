@@ -1,5 +1,6 @@
 .Field {
 	position: relative;
+	width: 120px;
 }
 .Group {
 	display: flex;

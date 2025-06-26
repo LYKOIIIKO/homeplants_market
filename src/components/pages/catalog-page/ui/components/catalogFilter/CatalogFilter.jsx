@@ -67,13 +67,19 @@ function CatalogFilter() {
 								value={category}
 								onChange={handleChangeCategory}
 							>
+								<FormControlLabel
+													
+													value={0}
+													control={<Radio />}
+													label="Все"
+												/>
 								{categoryItems?.map((item) => {
 									if (item.name == "каталог")
 										return item.items.map((i, index) => {
 											return (
 												<FormControlLabel
 													key={index}
-													value={index}
+													value={index+1}
 													control={<Radio />}
 													label={i.title}
 												/>

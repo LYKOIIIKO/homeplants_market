@@ -21,8 +21,40 @@ function CartPage() {
 		<Box my={3}>
 			<Container maxWidth="xl">
 				<Typography variant="h4" textAlign="center" m={2}>
-					Корзина
+					Корзина {!cart.length && "пуста"}
 				</Typography>
+				{!!cart.length && (
+					<>
+					<Divider />
+						<Box
+							sx={{
+								display: "flex",
+								flexDirection: "column",
+								alignItems: "flex-end",
+								gap: 3,
+								my: 2,
+							}}
+						>
+							<Typography variant="h5" textTransform="uppercase">
+								итого{" "}
+								{cart?.reduce((acc, item) => {
+									let value = products?.find((product) => {
+										if (product.id == item.id)
+											return product;
+									});
+
+									return (acc += +value?.price * +item.count);
+								}, 0)}{" "}
+								руб.
+							</Typography>
+							<Button variant="contained" color="primary">
+								оформить заказ
+							</Button>
+						</Box>
+						<Divider />
+					</>
+				)}
+
 				<List>
 					{cart?.map((item) => {
 						return products?.map((product) => {
@@ -37,32 +69,7 @@ function CartPage() {
 								);
 						});
 					})}
-
-					<Divider />
 				</List>
-				<Box
-					sx={{
-						display: "flex",
-						flexDirection: "column",
-						alignItems: "flex-end",
-						gap: 3,
-					}}
-				>
-					<Typography variant="h5" textTransform="uppercase">
-						total{" "}
-						{cart?.reduce((acc, item) => {
-							let value = products?.find((product) => {
-								if (product.id == item.id) return product;
-							});
-
-							return (acc += +value?.price * +item.count);
-						}, 0)}{" "} 
-						pcs.
-					</Typography>
-					<Button variant="contained" color="primary">
-						оформить заказ
-					</Button>
-				</Box>
 			</Container>
 		</Box>
 	);

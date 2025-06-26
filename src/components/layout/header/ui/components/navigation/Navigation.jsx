@@ -23,7 +23,7 @@ function Navigation() {
 					link: "/catalog/air-purifying-plants",
 				},
 				{ title: "Горшки и кашпо", link: "/catalog/planters-and-pots" },
-				{ title: "Инструмент", link: "/catalog/tools" },
+				{ title: "Инструменты", link: "/catalog/gardening-tools" },
 			],
 		},
 	];
