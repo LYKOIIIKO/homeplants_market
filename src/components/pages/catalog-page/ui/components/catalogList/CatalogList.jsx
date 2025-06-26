@@ -7,7 +7,7 @@ import CatalogSort from "../catalogSort/CatalogSort";
 import DrawerFilter from "../drawerFilter/DrawerFilter";
 import ProductCard from "../productCard/ProductCard";
 
-function CatalogList() {
+function CatalogList({ category }) {
 	const [mobileOpen, setMobileOpen] = useState(false);
 
 	const handleDrawerToggle = () => {
@@ -64,14 +64,35 @@ function CatalogList() {
 							spacing={5}
 						>
 							{products?.map((item) => {
-								return (
-									<Grid
-										key={item.id}
-										size={{ xs: 12, sm: 6, lg: 4, xl: 3 }}
-									>
-										<ProductCard product={item} />
-									</Grid>
-								);
+								if (category && item.category == category) {
+									return (
+										<Grid
+											key={item.id}
+											size={{
+												xs: 12,
+												sm: 6,
+												lg: 4,
+												xl: 3,
+											}}
+										>
+											<ProductCard product={item} />
+										</Grid>
+									);
+								} else if (!category) {
+									return (
+										<Grid
+											key={item.id}
+											size={{
+												xs: 12,
+												sm: 6,
+												lg: 4,
+												xl: 3,
+											}}
+										>
+											<ProductCard product={item} />
+										</Grid>
+									);
+								}
 							})}
 						</Grid>
 					</Grid>

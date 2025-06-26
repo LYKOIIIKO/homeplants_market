@@ -30,7 +30,7 @@ function PageNavigation({
 							underline="hover"
 							color="inherit"
 							variant="body2"
-							onClick={() => navigate(linkTo)}
+							onClick={() => navigate(`/${linkTo}`)}
 						>
 							{title}
 						</Link>
@@ -41,7 +41,7 @@ function PageNavigation({
 							underline="hover"
 							color="inherit"
 							variant="body2"
-							onClick={() => navigate(`${linkTo}${categoryLink}`)}
+							onClick={() => navigate(`/${linkTo}/${categoryLink}`)}
 						>
 							{categoryTitle}
 						</Link>
@@ -54,7 +54,7 @@ function PageNavigation({
 							variant="body2"
 							onClick={() =>
 								navigate(
-									`${linkTo}${categoryLink}${productLink}`
+									`/${linkTo}/${categoryLink}/${productLink}`
 								)
 							}
 						>

@@ -4,7 +4,7 @@ import PageNavigation from "../../../shared/ui/pageNavigation/PageNavigation"
 function DeliveryPage() {
   return (
     <>
-			<PageNavigation linkTo={'/delivery'} title={'Доставка'} />
+			<PageNavigation linkTo={'delivery'} title={'Доставка'} />
 	
 	<Box my={3}>
 			<Container maxWidth="xl">

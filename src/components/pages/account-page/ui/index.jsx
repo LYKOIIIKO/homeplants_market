@@ -4,7 +4,7 @@ import PageNavigation from "../../../shared/ui/pageNavigation/PageNavigation";
 function AccountPage() {
 	return (
 		<>
-			<PageNavigation linkTo={"/account"} title={"Страница пользователя"} />
+			<PageNavigation linkTo={"account"} title={"Страница пользователя"} />
 
 			<Box my={3}>
 				<Container maxWidth="xl">

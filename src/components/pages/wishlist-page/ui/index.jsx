@@ -4,7 +4,7 @@ import PageNavigation from "../../../shared/ui/pageNavigation/PageNavigation"
 function WishlistPage() {
   return (
 	<>
-			<PageNavigation linkTo={'/wishlist'} title={'Избранное'} />
+			<PageNavigation linkTo={'wishlist'} title={'Избранное'} />
 			
 		<Box my={3}>
 			<Container maxWidth="xl">

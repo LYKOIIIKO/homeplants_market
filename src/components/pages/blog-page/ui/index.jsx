@@ -4,7 +4,7 @@ import PageNavigation from "../../../shared/ui/pageNavigation/PageNavigation";
 function BlogPage() {
 	return (
 		<>
-			<PageNavigation linkTo={'/blog'} title={'Блог'} />
+			<PageNavigation linkTo={'blog'} title={'Блог'} />
 			
 		<Box my={3}>
 			<Container maxWidth="xl">

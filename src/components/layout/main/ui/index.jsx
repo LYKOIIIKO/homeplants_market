@@ -33,18 +33,22 @@ function Main() {
 				<Route path="catalog">
 					<Route index element={<CatalogPage />} />
 					<Route
+						path=":categoryId"
+						element={<CatalogPage />}
+					/>
+					<Route
 						path=":categoryId/:productId"
 						element={<ProductPage />}
 					/>
 				</Route>
-				<Route path="/blog" element={<BlogPage />} />
-				<Route path="/delivery" element={<DeliveryPage />} />
-				<Route path="/about" element={<AboutPage />} />
-				<Route path="/cart" element={<CartPage />} />
-				<Route path="/account" element={<AccountPage />} />
-				<Route path="/wishlist" element={<WishlistPage />} />
-				<Route path="/pay" element={<PayPage />} />
-				<Route path="/returns" element={<ReturnsPage />} />
+				<Route path="blog" element={<BlogPage />} />
+				<Route path="delivery" element={<DeliveryPage />} />
+				<Route path="about" element={<AboutPage />} />
+				<Route path="cart" element={<CartPage />} />
+				<Route path="account" element={<AccountPage />} />
+				<Route path="wishlist" element={<WishlistPage />} />
+				<Route path="pay" element={<PayPage />} />
+				<Route path="returns" element={<ReturnsPage />} />
 				<Route path="*" element={<PageNotFound />} />
 			</Routes>
 		</main>

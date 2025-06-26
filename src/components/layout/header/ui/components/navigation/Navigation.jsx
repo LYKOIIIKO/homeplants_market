@@ -1,7 +1,9 @@
 import ArrowDropDownIcon from "@mui/icons-material/ArrowDropDown";
 import { Box, List, ListItem, Paper, Typography } from "@mui/material";
+import { observer } from "mobx-react-lite";
 import { Link, NavLink } from "react-router";
 import Logo from "../../../../../../assets/logo/Logo";
+import navigationStore from "../../../../../../store/navigationStore";
 import styles from "./Navigation.module.css";
 
 function Navigation() {
@@ -12,21 +14,7 @@ function Navigation() {
 		{ id: 4, name: "о нас", link: "/about", dropMenu: false },
 	];
 
-	const subMenuItems = [
-		{
-			name: "каталог",
-			items: [
-				{ title: "Комнатные растения", link: "/catalog/indoor-plants" },
-				{ title: "Уличные растения", link: "/catalog/outdoor-plants" },
-				{
-					title: "Очищающие воздух растения",
-					link: "/catalog/air-purifying-plants",
-				},
-				{ title: "Горшки и кашпо", link: "/catalog/planters-and-pots" },
-				{ title: "Инструменты", link: "/catalog/gardening-tools" },
-			],
-		},
-	];
+	const { navigation } = navigationStore;
 
 	return (
 		<List
@@ -61,7 +49,7 @@ function Navigation() {
 							</Box>
 						</NavLink>
 
-						{subMenuItems.map((subItem) => {
+						{navigation.map((subItem) => {
 							if (subItem.name === item.name)
 								return (
 									<Paper
@@ -74,7 +62,10 @@ function Navigation() {
 												(item, index) => {
 													return (
 														<ListItem key={index}>
-															<Link className={styles.navLink}
+															<Link
+																className={
+																	styles.navLink
+																}
 																to={item.link}
 															>
 																<Typography
@@ -105,4 +96,4 @@ function Navigation() {
 		</List>
 	);
 }
-export default Navigation;
+export default observer(Navigation);

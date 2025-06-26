@@ -4,7 +4,7 @@ import PageNavigation from "../../../shared/ui/pageNavigation/PageNavigation";
 function AboutPage() {
 	return (
 		<>
-			<PageNavigation linkTo={"/about"} title={"О нас"} />
+			<PageNavigation linkTo={"about"} title={"О нас"} />
 
 			<Box my={3}>
 				<Container maxWidth="xl">

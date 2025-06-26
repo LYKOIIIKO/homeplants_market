@@ -11,7 +11,9 @@ import {
 	Slider,
 	Typography,
 } from "@mui/material";
+import { observer } from "mobx-react-lite";
 import { useState } from "react";
+import navigationStore from "../../../../../../store/navigationStore";
 
 function CatalogFilter() {
 	const [category, setCategory] = useState("");
@@ -29,22 +31,7 @@ function CatalogFilter() {
 	const handleChangePrice = (event, newValue) => {
 		setPrice(newValue);
 	};
-
-	const categoryItems = [
-		{
-			name: "каталог",
-			items: [
-				{ title: "Комнатные растения", link: "/catalog/indoor-plants" },
-				{ title: "Уличные растения", link: "/catalog/outdoor-plants" },
-				{
-					title: "Очищающие воздух растения",
-					link: "/catalog/air-purifying-plants",
-				},
-				{ title: "Горшки и кашпо", link: "/catalog/planters-and-pots" },
-				{ title: "Инструмент", link: "/catalog/tools" },
-			],
-		},
-	];
+	const { navigation } = navigationStore;
 
 	return (
 		<Box>
@@ -68,18 +55,17 @@ function CatalogFilter() {
 								onChange={handleChangeCategory}
 							>
 								<FormControlLabel
-													
-													value={0}
-													control={<Radio />}
-													label="Все"
-												/>
-								{categoryItems?.map((item) => {
+									value={0}
+									control={<Radio />}
+									label="Все"
+								/>
+								{navigation?.map((item) => {
 									if (item.name == "каталог")
 										return item.items.map((i, index) => {
 											return (
 												<FormControlLabel
 													key={index}
-													value={index+1}
+													value={index + 1}
 													control={<Radio />}
 													label={i.title}
 												/>
@@ -157,4 +143,4 @@ function CatalogFilter() {
 		</Box>
 	);
 }
-export default CatalogFilter;
+export default observer(CatalogFilter);

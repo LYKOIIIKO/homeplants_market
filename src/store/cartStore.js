@@ -27,14 +27,14 @@ class CartStore {
 		return this.cart.length;
 	}
 
-	setCart(productId) {
+	setCart(productId, productCount) {
 		if (!this.cart.length) {
-			this.cart = [...this.cart, { id: productId, count: 1 }];
+			this.cart = [...this.cart, { id: productId, count: productCount ? productCount : 1 }];
 
 			localStorage.setItem("userCart", JSON.stringify(this.cart));
 		} else {
 			if (!this.getItemStatus(productId)) {
-				this.cart = [...this.cart, { id: productId, count: 1 }];
+				this.cart = [...this.cart, { id: productId, count: productCount ? productCount : 1 }];
 
 				localStorage.setItem("userCart", JSON.stringify(this.cart));
 			}
@@ -47,9 +47,10 @@ class CartStore {
 	}
 
 	getItemCount(id) {
-		return this.cart.map((item) => {
+		let obj = this.cart.find((item) => {
 			if (item.id == id) return item.count;
 		});
+		return obj.count
 	}
 
 	incrementItemCount(id) {
