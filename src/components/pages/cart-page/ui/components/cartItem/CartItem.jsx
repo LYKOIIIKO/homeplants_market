@@ -40,6 +40,7 @@ function CartItem({ item, count }) {
 				<img
 					className={s.image}
 					src={item.img1}
+					alt={item.title}
 					onClick={() => navigate(`/catalog/${item.category}/${item.id}`)}
 				/>
 			</Grid>

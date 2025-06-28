@@ -40,16 +40,12 @@ const validationSchema = Yup.object().shape({
 function CheckoutForm() {
 	let [cities, setCities] = useState([]);
 
-	let getCities = async () => {
-		const resp = await fetch(
-			"https://gist.githubusercontent.com/alex-oleshkevich/6946d85bf075a6049027306538629794/raw/3986e8e1ade2d4e1186f8fee719960de32ac6955/by-cities.json"
-		);
-		const data = await resp.json();
-		setCities(data[0].regions);
-	};
-
 	useEffect(() => {
-		getCities();
+		fetch(
+			"https://gist.githubusercontent.com/alex-oleshkevich/6946d85bf075a6049027306538629794/raw/3986e8e1ade2d4e1186f8fee719960de32ac6955/by-cities.json"
+		)
+			.then((resp) => resp.json())
+			.then((data) => setCities(data[0].regions));
 	}, []);
 
 	let arr = cities.map((region) => {
@@ -61,8 +57,8 @@ function CheckoutForm() {
 	let arrStr = arr.map((item) => {
 		return item.join(", ");
 	});
+
 	let citiesSort = arrStr.join(", ").split(", ").sort();
-	
 
 	const formik = useFormik({
 		initialValues: {
@@ -100,7 +96,12 @@ function CheckoutForm() {
 
 	return (
 		<>
-			<Box id="checkout-form" component={"form"} onSubmit={handleSubmit} px={6}>
+			<Box
+				id="checkout-form"
+				component={"form"}
+				onSubmit={handleSubmit}
+				px={1}
+			>
 				<Box
 					mb={3}
 					sx={{ display: "flex", flexDirection: "column", gap: 3 }}
@@ -176,7 +177,7 @@ function CheckoutForm() {
 						/>
 					</Box>
 					<TextField
-					id="checkout-surName"
+						id="checkout-surName"
 						label="Отчество"
 						name="surName"
 						onChange={handleChange}
@@ -209,9 +210,9 @@ function CheckoutForm() {
 						helperText={touched.city && errors.city}
 						onBlur={handleBlur}
 					>
-						{citiesSort.map((city, index) => {
+						{citiesSort.map((city) => {
 							return (
-								<MenuItem key={index} value={city}>
+								<MenuItem key={city} value={city}>
 									{city}
 								</MenuItem>
 							);

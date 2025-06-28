@@ -7,18 +7,16 @@ import CatalogList from "./components/catalogList/CatalogList";
 function CatalogPage() {
 	const { categoryId } = useParams();
 	const { navigation } = navigationStore;
-	let categoryTitle = ''
+	let categoryTitle = "";
 
-	
 	if (categoryId) {
-
 		const categoryTitleObj = navigation.map((item) => {
 			if (item.name == "каталог")
 				return item.items.find((i) => {
 					if (i.name == categoryId) return i.title;
 				});
 		});
-	
+
 		categoryTitle = categoryTitleObj.map((item) => {
 			return item.title;
 		});

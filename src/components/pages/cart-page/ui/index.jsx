@@ -17,18 +17,18 @@ function CartPage() {
 	const { cart } = cartStore;
 
 	const { products } = catalogStore;
-	
-	const navigate = useNavigate()
+
+	const navigate = useNavigate();
 
 	return (
-		<Box my={3}>
-			<Container maxWidth="xl">
-				<Typography variant="h4" textAlign="center" m={2}>
-					Корзина {!cart.length && "пуста"}
-				</Typography>
-				{!!cart.length && (
-					<>
+		<Box>
+			<Typography variant="h4" textAlign="center" my={3}>
+				Корзина {!cart.length && "пуста"}
+			</Typography>
+			{!!cart.length && (
+				<>
 					<Divider />
+					<Container maxWidth="xl">
 						<Box
 							sx={{
 								display: "flex",
@@ -50,14 +50,20 @@ function CartPage() {
 								}, 0)}{" "}
 								руб.
 							</Typography>
-							<Button variant="contained" color="primary" onClick={() => navigate('/checkout')}>
+							<Button
+								variant="contained"
+								size="large"
+								color="primary"
+								onClick={() => navigate("/checkout")}
+							>
 								оформить заказ
 							</Button>
 						</Box>
-						<Divider />
-					</>
-				)}
-
+					</Container>
+					<Divider />
+				</>
+			)}
+			<Container maxWidth="xl">
 				<List>
 					{cart?.map((item) => {
 						return products?.map((product) => {

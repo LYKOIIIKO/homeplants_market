@@ -53,33 +53,31 @@ function Navigation() {
 							if (subItem.name === item.name)
 								return (
 									<Paper
-										key={subItem}
+										key={subItem.name}
 										variant="outlined"
 										className={styles.dropItem}
 									>
 										<List>
-											{subItem.items.map(
-												(item, index) => {
-													return (
-														<ListItem key={index}>
-															<Link
+											{subItem.items.map((item) => {
+												return (
+													<ListItem key={item.name}>
+														<Link
+															className={
+																styles.navLink
+															}
+															to={item.link}
+														>
+															<Typography
 																className={
 																	styles.navLink
 																}
-																to={item.link}
 															>
-																<Typography
-																	className={
-																		styles.navLink
-																	}
-																>
-																	{item.title}
-																</Typography>
-															</Link>
-														</ListItem>
-													);
-												}
-											)}
+																{item.title}
+															</Typography>
+														</Link>
+													</ListItem>
+												);
+											})}
 										</List>
 									</Paper>
 								);
