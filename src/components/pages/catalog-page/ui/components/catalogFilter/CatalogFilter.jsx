@@ -13,25 +13,32 @@ import {
 } from "@mui/material";
 import { observer } from "mobx-react-lite";
 import { useState } from "react";
+import { useSearchParams } from "react-router";
 import navigationStore from "../../../../../../store/navigationStore";
 
 function CatalogFilter() {
 	const [category, setCategory] = useState("");
+	const [price, setPrice] = useState([0, 1000]);
 	const [size, setSize] = useState("");
+
+	const [searchParams, setSearchParams] = useSearchParams();
+
+	const { navigation } = navigationStore;
 
 	const handleChangeCategory = (event) => {
 		setCategory(event.target.value);
+		setSearchParams({ category: event.target.value });
 	};
-	const handleChangeSize = (event) => {
-		setSize(event.target.value);
-	};
-
-	const [price, setPrice] = useState([0, 1000]);
 
 	const handleChangePrice = (event, newValue) => {
 		setPrice(newValue);
+		setSearchParams({price: newValue})
 	};
-	const { navigation } = navigationStore;
+
+	const handleChangeSize = (event) => {
+		setSize(event.target.value);
+		setSearchParams({ size: event.target.value });
+	};
 
 	return (
 		<Box>
@@ -49,23 +56,24 @@ function CatalogFilter() {
 					<AccordionDetails sx={{ py: 0 }}>
 						<FormControl>
 							<RadioGroup
-								aria-labelledby="demo-controlled-radio-buttons-group"
-								name="controlled-radio-buttons-group"
+								aria-labelledby="filter-category-group"
+								name="filter-category"
 								value={category}
 								onChange={handleChangeCategory}
 							>
 								<FormControlLabel
-									value={0}
+									key="all"
+									value={"all"}
 									control={<Radio />}
 									label="Все"
 								/>
 								{navigation?.map((item) => {
 									if (item.name == "каталог")
-										return item.items.map((i, index) => {
+										return item.items.map((i) => {
 											return (
 												<FormControlLabel
-													key={index}
-													value={index + 1}
+													key={i.name}
+													value={i.name}
 													control={<Radio />}
 													label={i.title}
 												/>
@@ -81,7 +89,7 @@ function CatalogFilter() {
 				<Accordion defaultExpanded>
 					<AccordionSummary
 						expandIcon={<ExpandMoreIcon />}
-						aria-controls="catalog-filter"
+						aria-controls="filter-price-group"
 						id="filter-price"
 					>
 						<Typography textTransform="uppercase">Цена</Typography>
@@ -115,23 +123,23 @@ function CatalogFilter() {
 					<AccordionDetails sx={{ py: 0 }}>
 						<FormControl>
 							<RadioGroup
-								aria-labelledby="demo-controlled-radio-buttons-group"
-								name="controlled-radio-buttons-group"
+								aria-labelledby="filter-size-group"
+								name="filter-size"
 								value={size}
 								onChange={handleChangeSize}
 							>
 								<FormControlLabel
-									value="1"
+									value="small"
 									control={<Radio />}
 									label="Маленький"
 								/>
 								<FormControlLabel
-									value="2"
+									value="middle"
 									control={<Radio />}
 									label="Средний"
 								/>
 								<FormControlLabel
-									value="3"
+									value="large"
 									control={<Radio />}
 									label="Большой"
 								/>
