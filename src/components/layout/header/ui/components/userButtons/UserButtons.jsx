@@ -30,7 +30,7 @@ function UserButtons() {
 					<IconButton>
 						<Badge
 							color="secondary"
-							badgeContent={cartStore.cart.reduce((acc, item) => (acc += item.count), 0)}
+							badgeContent={cartStore.getCartCount()}
 						>
 							<ShoppingCartOutlinedIcon />
 						</Badge>

@@ -7,11 +7,11 @@ function CheckoutItem({ item, count }) {
 		<Grid
 			container
 			spacing={2}
-			mb={2}
+			my={3}
 			alignItems="center"
 			sx={{ width: "100%" }}
 		>
-			<Grid size={2}>
+			<Grid size={{xs:5, sm: 2}}>
 				<Badge color="primary" badgeContent={count}>
 					<Box
 						borderRadius={5}
@@ -41,8 +41,8 @@ function CheckoutItem({ item, count }) {
 					{item.title}
 				</Typography>
 			</Grid>
-			<Grid size={2}>
-				<Typography variant="subtitle1">
+			<Grid size={{xs:12, sm: 2}}>
+				<Typography variant="subtitle1" textAlign='right'>
 					{item.price * count} руб.
 				</Typography>
 			</Grid>

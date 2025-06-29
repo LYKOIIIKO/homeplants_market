@@ -5,6 +5,7 @@ import {
   AccordionSummary,
   Box,
   Button,
+  Divider,
   List,
   ListItem,
   TextField,
@@ -19,45 +20,65 @@ function CheckoutTotal() {
 	const { cart } = cartStore;
 	const { products } = catalogStore;
 
-	const cartTotal = cart?.reduce((acc, item) => {
-		let value = products?.find((product) => {
-			if (product.id == item.id) return product;
-		});
-
-		return (acc += +value?.price * +item.count);
-	}, 0);
+	const cartTotal = cartStore.getCartTotal(products);
+	const cartCount = cartStore.getCartCount();
 
 	return (
-		<Box px={1}>
-			<Accordion defaultExpanded>
+		<Box>
+			<Accordion defaultExpanded elevation={3}>
 				<AccordionSummary
 					expandIcon={<ExpandMoreIcon />}
 					aria-controls="checkout-total"
 					id="checkout-total"
-					sx={{ display: { xs: "flex", lg: "flex" } }}
 				>
-					<Typography>Ваш заказ {cartTotal} руб.</Typography>
+					<Typography
+						variant="body1"
+						textTransform="uppercase"
+						fontWeight="bold"
+					>
+						Ваш заказ {cartTotal || " "} руб.
+					</Typography>
 				</AccordionSummary>
-				<AccordionDetails>
+				<AccordionDetails
+					sx={{ display: "flex", flexDirection: "column", gap: 3 }}
+				>
 					<List>
 						{cart?.map((item) => {
 							return products?.map((product) => {
 								if (product.id == item.id)
 									return (
-										<ListItem key={item.id}>
-											<CheckoutItem
-												item={product}
-												count={item.count}
-											/>
-										</ListItem>
+										<Box key={item.id}>
+											<ListItem sx={{ p: 0 }}>
+												<CheckoutItem
+													item={product}
+													count={item.count}
+												/>
+											</ListItem>
+											<Divider />
+										</Box>
 									);
 							});
 						})}
 					</List>
-					<Box>
-						<TextField label="Промокод" placeholder="Промокод" />
+					<Box
+						sx={{
+							display: "flex",
+							alignItems: { xs: "flex-end", sm: "stretch" },
+							gap: 2,
+							flexDirection: { xs: "column", sm: "row" },
+						}}
+					>
+						<TextField
+							disabled
+							type="text"
+							name="promocode"
+							size="small"
+							label="Промокод"
+							placeholder="Промокод"
+							sx={{ flexGrow: 1, alignSelf: "stretch" }}
+						/>
 						<Button variant="contained" disabled>
-							Применить
+							Недоступно
 						</Button>
 					</Box>
 					<Box
@@ -66,8 +87,8 @@ function CheckoutTotal() {
 							justifyContent: "space-between",
 						}}
 					>
-						<Typography>Промежуточный итог / {cart?.reduce((acc, item) => (acc += item.count), 0)} шт.</Typography>
-						<Typography>{cartTotal} руб.</Typography>
+						<Typography>Сумма заказа ·</Typography>
+						<Typography>{cartTotal || " "} руб.</Typography>
 					</Box>
 					<Box
 						sx={{
@@ -75,7 +96,7 @@ function CheckoutTotal() {
 							justifyContent: "space-between",
 						}}
 					>
-						<Typography>Доставка</Typography>
+						<Typography>Доставка ·</Typography>
 						<Typography>Бесплатно</Typography>
 					</Box>
 					<Box
@@ -84,8 +105,12 @@ function CheckoutTotal() {
 							justifyContent: "space-between",
 						}}
 					>
-						<Typography variant="h5">Итого</Typography>
-						<Typography variant="h5">{cartTotal} руб.</Typography>
+						<Typography variant="h5" fontWeight="bold">
+							Итого ·
+						</Typography>
+						<Typography variant="h5" fontWeight="bold">
+							{cartTotal || " "} руб.
+						</Typography>
 					</Box>
 				</AccordionDetails>
 			</Accordion>

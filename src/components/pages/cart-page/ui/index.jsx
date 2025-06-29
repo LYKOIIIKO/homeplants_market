@@ -15,8 +15,9 @@ import CartItem from "./components/cartItem/CartItem";
 
 function CartPage() {
 	const { cart } = cartStore;
-
 	const { products } = catalogStore;
+
+	const cartTotal = cartStore.getCartTotal(products)
 
 	const navigate = useNavigate();
 
@@ -40,14 +41,7 @@ function CartPage() {
 						>
 							<Typography variant="h5" textTransform="uppercase">
 								итого{" "}
-								{cart?.reduce((acc, item) => {
-									let value = products?.find((product) => {
-										if (product.id == item.id)
-											return product;
-									});
-
-									return (acc += +value?.price * +item.count);
-								}, 0)}{" "}
+								{cartTotal || ' '}{" "}
 								руб.
 							</Typography>
 							<Button

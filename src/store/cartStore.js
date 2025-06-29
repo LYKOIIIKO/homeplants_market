@@ -80,6 +80,20 @@ class CartStore {
 
 		return str.includes(productId);
 	}
+
+	getCartTotal(products) {
+		return this.cart.reduce((acc, item) => {
+			let value = products.find((product) => {
+				if (product.id == item.id) return product;
+			});
+
+			return (acc += +value?.price * +item.count);
+		}, 0);
+	}
+
+	getCartCount() {
+		return this.cart.reduce((acc, item) => (acc += item.count), 0);
+	}
 }
 
 const cartStore = new CartStore();

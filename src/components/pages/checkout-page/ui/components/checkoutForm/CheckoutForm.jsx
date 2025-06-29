@@ -9,6 +9,7 @@ import {
 import { useFormik } from "formik";
 import { useEffect, useState } from "react";
 import * as Yup from "yup";
+import cartStore from "../../../../../../store/cartStore";
 
 //validation
 const phoneRegExp = /^(\+375|80)(29|25|44|33)(\d{3})(\d{2})(\d{2})$/;
@@ -33,11 +34,13 @@ const validationSchema = Yup.object().shape({
 	building: Yup.string().required("Обязательное поле"),
 	housing: Yup.string(),
 	apartment: Yup.string().required("Обязательное поле"),
-	postalIndex: Yup.string().required("Обязательное поле"),
-	paymentMetod: Yup.string().required("Обязательное поле"),
+	postalIndex: Yup.string()
+		.length(6, "Длина индекса 6 символов")
+		.required("Обязательное поле"),
+	paymentMethod: Yup.string().required("Обязательное поле"),
 });
 
-function CheckoutForm() {
+function CheckoutForm({ submitForm }) {
 	let [cities, setCities] = useState([]);
 
 	useEffect(() => {
@@ -59,6 +62,11 @@ function CheckoutForm() {
 	});
 
 	let citiesSort = arrStr.join(", ").split(", ").sort();
+	let regionsSort = cities
+		.map((item) => {
+			return item.name;
+		})
+		.sort();
 
 	const formik = useFormik({
 		initialValues: {
@@ -74,11 +82,13 @@ function CheckoutForm() {
 			housing: "",
 			apartment: "",
 			postalIndex: "",
-			paymentMetod: "",
+			paymentMethod: "cash",
 		},
 		validationSchema,
 		onSubmit: (values) => {
-			console.log(values);
+			submitForm(values);
+			cartStore.clearAll()
+			
 		},
 	});
 
@@ -112,6 +122,7 @@ function CheckoutForm() {
 					<TextField
 						fullWidth
 						id="checkout-email"
+						type="email"
 						label="Email"
 						name="email"
 						onChange={handleChange}
@@ -125,6 +136,7 @@ function CheckoutForm() {
 					<TextField
 						fullWidth
 						id="checkout-phone"
+						type="tel"
 						label="Телефон"
 						name="phone"
 						onChange={handleChange}
@@ -153,6 +165,7 @@ function CheckoutForm() {
 						<TextField
 							fullWidth
 							id="checkout-name"
+							type="text"
 							label="Имя"
 							name="name"
 							onChange={handleChange}
@@ -166,6 +179,7 @@ function CheckoutForm() {
 						<TextField
 							fullWidth
 							id="checkout-lastName"
+							type="text"
 							label="Фамилия"
 							name="lastName"
 							onChange={handleChange}
@@ -178,6 +192,7 @@ function CheckoutForm() {
 					</Box>
 					<TextField
 						id="checkout-surName"
+						type="text"
 						label="Отчество"
 						name="surName"
 						onChange={handleChange}
@@ -187,7 +202,9 @@ function CheckoutForm() {
 					/>
 					<TextField
 						fullWidth
+						select
 						id="checkout-region"
+						type="text"
 						label="Область"
 						name="region"
 						onChange={handleChange}
@@ -195,12 +212,20 @@ function CheckoutForm() {
 						placeholder="Область"
 						onBlur={handleBlur}
 						autoComplete="on"
-					/>
+					>
+						{regionsSort.map((region) => {
+							return (
+								<MenuItem key={region} value={region}>
+									{region}
+								</MenuItem>
+							);
+						})}
+					</TextField>
 					<TextField
 						fullWidth
 						select
 						id="checkout-city"
-						defaultValue="Солигорск"
+						type="text"
 						label="Город"
 						name="city"
 						onChange={handleChange}
@@ -221,6 +246,7 @@ function CheckoutForm() {
 					<TextField
 						fullWidth
 						id="checkout-street"
+						type="text"
 						label="Улица"
 						name="street"
 						onChange={handleChange}
@@ -240,6 +266,7 @@ function CheckoutForm() {
 						<TextField
 							fullWidth
 							id="checkout-building"
+							type="text"
 							label="Дом"
 							name="building"
 							onChange={handleChange}
@@ -252,6 +279,7 @@ function CheckoutForm() {
 						<TextField
 							fullWidth
 							id="checkout-housing"
+							type="text"
 							label="Корпус"
 							name="housing"
 							onChange={handleChange}
@@ -262,6 +290,7 @@ function CheckoutForm() {
 						<TextField
 							fullWidth
 							id="checkout-apartment"
+							type="text"
 							label="Квартира"
 							name="apartment"
 							onChange={handleChange}
@@ -275,6 +304,7 @@ function CheckoutForm() {
 					<TextField
 						fullWidth
 						id="checkout-postalIndex"
+						type="text"
 						label="Индекс"
 						name="postalIndex"
 						onChange={handleChange}
@@ -287,19 +317,23 @@ function CheckoutForm() {
 					<TextField
 						fullWidth
 						select
-						id="checkout-paymentMetod"
-						defaultValue="cash"
+						id="checkout-paymentMethod"
+						type="text"
+						value={values.paymentMethod}
 						label="Способ оплаты"
-						name="paymentMetod"
+						name="paymentMethod"
 						onChange={handleChange}
-						error={touched.paymentMetod && errors.paymentMetod}
-						value={values.paymentMetod}
+						error={touched.paymentMethod && errors.paymentMethod}
 						placeholder="Способ оплаты"
-						helperText={touched.paymentMetod && errors.paymentMetod}
+						helperText={touched.paymentMethod && errors.paymentMethod}
 						onBlur={handleBlur}
 					>
-						<MenuItem value="cash">Наложенный платеж</MenuItem>
-						<MenuItem value="cart">Оплата картой</MenuItem>
+						<MenuItem key="cash" value="cash">
+							Наложенный платеж
+						</MenuItem>
+						<MenuItem key="cart" value="cart">
+							Оплата картой
+						</MenuItem>
 					</TextField>
 				</Box>
 				<ButtonGroup
