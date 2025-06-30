@@ -4,6 +4,7 @@ import {
 	AccordionDetails,
 	AccordionSummary,
 	Box,
+	Button,
 	FormControl,
 	FormControlLabel,
 	Radio,
@@ -12,33 +13,76 @@ import {
 	Typography,
 } from "@mui/material";
 import { observer } from "mobx-react-lite";
-import { useState } from "react";
-import { useSearchParams } from "react-router";
+import { useEffect, useState } from "react";
+import {
+	useNavigate,
+	useParams
+} from "react-router";
 import navigationStore from "../../../../../../store/navigationStore";
 
-function CatalogFilter() {
-	const [category, setCategory] = useState("");
-	const [price, setPrice] = useState([0, 1000]);
-	const [size, setSize] = useState("");
+function CatalogFilter({searchParams, setSearchParams}) {
+	const { categoryId } = useParams();
+	
+	const navigate = useNavigate();
 
-	const [searchParams, setSearchParams] = useSearchParams();
+	const [category, setCategory] = useState("");
+
+	const [price, setPrice] = useState(
+		searchParams.getAll("price").length
+			? searchParams.getAll("price")
+			: [0, 1000]
+	);
+
+	const [size, setSize] = useState(searchParams.get("size"));
+
+	const [params, setParams] = useState(
+		!searchParams.toString() && !size && price != [0, 1000]
+			? {}
+			: { price: price, size: size }
+	);
 
 	const { navigation } = navigationStore;
 
 	const handleChangeCategory = (event) => {
+		const value = event.target.value;
 		setCategory(event.target.value);
-		setSearchParams({ category: event.target.value });
+		navigate(
+			value == ""
+				? `/catalog?${searchParams.toString()} `
+				: `/catalog/${value}?${searchParams.toString()}`
+		);
 	};
 
-	const handleChangePrice = (event, newValue) => {
-		setPrice(newValue);
-		setSearchParams({price: newValue})
+	const handleChangeParams = (e, value) => {
+		e.preventDefault();
+		const filterName = e.target.name;
+
+		if (filterName == "filter-price") {
+			setParams((prev) => ({ ...prev, price: value }));
+			setPrice(value);
+		}
+		if (filterName == "filter-size") {
+			setParams((prev) => ({ ...prev, size: value }));
+			setSize(value);
+		}
 	};
 
-	const handleChangeSize = (event) => {
-		setSize(event.target.value);
-		setSearchParams({ size: event.target.value });
+	const handleClearParams = () => {
+		setParams({});
+		setSearchParams({});
+		setPrice([0, 1000]);
+		setSize("");
+		setCategory("");
+		navigate("/catalog");
 	};
+
+	useEffect(() => {
+		setCategory(categoryId == undefined ? "" : categoryId);
+	}, [categoryId]);
+
+	useEffect(() => {
+		if (Object.keys(params).length != 0) setSearchParams(params);
+	}, [params]);
 
 	return (
 		<Box>
@@ -63,7 +107,7 @@ function CatalogFilter() {
 							>
 								<FormControlLabel
 									key="all"
-									value={"all"}
+									value={""}
 									control={<Radio />}
 									label="Все"
 								/>
@@ -96,11 +140,12 @@ function CatalogFilter() {
 					</AccordionSummary>
 					<AccordionDetails sx={{ py: 2, px: 5 }}>
 						<Slider
-							aria-label="filter-price"
+							aria-label="filter-price-group"
+							name="filter-price"
 							value={price}
 							max={1000}
 							step={10}
-							onChange={handleChangePrice}
+							onChange={handleChangeParams}
 							valueLabelDisplay="auto"
 						/>
 						<Typography textAlign="center">
@@ -126,7 +171,7 @@ function CatalogFilter() {
 								aria-labelledby="filter-size-group"
 								name="filter-size"
 								value={size}
-								onChange={handleChangeSize}
+								onChange={handleChangeParams}
 							>
 								<FormControlLabel
 									value="small"
@@ -147,6 +192,20 @@ function CatalogFilter() {
 						</FormControl>
 					</AccordionDetails>
 				</Accordion>
+			</Box>
+			<Box sx={{ display: "flex", justifyContent: "center" }}>
+				<Button
+					size="large"
+					variant="contained"
+					onClick={handleClearParams}
+					disabled={
+						categoryId == undefined && !searchParams.toString()
+							? true
+							: false
+					}
+				>
+					очистить параметры
+				</Button>
 			</Box>
 		</Box>
 	);

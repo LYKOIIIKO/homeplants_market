@@ -1,11 +1,12 @@
 import { observer } from "mobx-react-lite";
-import { useParams } from "react-router";
+import { useParams, useSearchParams } from "react-router";
 import navigationStore from "../../../../store/navigationStore";
 import PageNavigation from "../../../shared/ui/pageNavigation/PageNavigation";
 import CatalogList from "./components/catalogList/CatalogList";
 
 function CatalogPage() {
 	const { categoryId } = useParams();
+	const [searchParams, setSearchParams] = useSearchParams();
 	const { navigation } = navigationStore;
 	let categoryTitle = "";
 
@@ -30,7 +31,7 @@ function CatalogPage() {
 				categoryLink={categoryId ? categoryId : null}
 				categoryTitle={categoryId ? categoryTitle : null}
 			/>
-			<CatalogList category={categoryId} />
+			<CatalogList category={categoryId} searchParams={searchParams} setSearchParams={setSearchParams} />
 		</>
 	);
 }

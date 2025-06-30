@@ -7,7 +7,7 @@ import CatalogSort from "../catalogSort/CatalogSort";
 import DrawerFilter from "../drawerFilter/DrawerFilter";
 import ProductCard from "../productCard/ProductCard";
 
-function CatalogList({ category }) {
+function CatalogList({ category, searchParams, setSearchParams }) {
 	const [mobileOpen, setMobileOpen] = useState(false);
 
 	const handleDrawerToggle = () => {
@@ -15,7 +15,6 @@ function CatalogList({ category }) {
 	};
 
 	const { products } = catalogStore;
-
 	return (
 		<section className="section-catalogList" style={{ margin: "20px 0" }}>
 			<Container maxWidth="xl">
@@ -24,7 +23,10 @@ function CatalogList({ category }) {
 						size={{ xs: 0, lg: 4 }}
 						sx={{ display: { xs: "none", lg: "block" } }}
 					>
-						<CatalogFilter />
+						<CatalogFilter
+							searchParams={searchParams}
+							setSearchParams={setSearchParams}
+						/>
 					</Grid>
 
 					<Grid
@@ -63,42 +65,78 @@ function CatalogList({ category }) {
 							sx={{ m: "20px 0" }}
 							spacing={5}
 						>
-							{products?.map((item) => {
-								if (category && item.category == category) {
-									return (
-										<Grid
-											key={item.id}
-											size={{
-												xs: 12,
-												sm: 6,
-												lg: 4,
-												xl: 3,
-											}}
-										>
-											<ProductCard product={item} />
-										</Grid>
-									);
-								} else if (!category) {
-									return (
-										<Grid
-											key={item.id}
-											size={{
-												xs: 12,
-												sm: 6,
-												lg: 4,
-												xl: 3,
-											}}
-										>
-											<ProductCard product={item} />
-										</Grid>
-									);
-								}
-							})}
+							{products
+								.filter((item) => {
+									if (
+										category != undefined &&
+										!searchParams.toString()
+									) {
+										return item.category.includes(category);
+									} else if (
+										category != undefined &&
+										!!searchParams.getAll("price").length
+									) {
+										return (
+											item.category.includes(category) &&
+											+item.price >=
+												searchParams.getAll(
+													"price"
+												)[0] &&
+											+item.price <=
+												searchParams.getAll("price")[1]
+										);
+									} else if (
+										category != undefined &&
+										!!searchParams.get("size")
+									) {
+										return (
+											item.category.includes(category) &&
+											item.size.includes(
+												searchParams.get("size")
+											)
+										);
+									} else if (
+										category != undefined &&
+										!!searchParams.get("size") &&
+										!!searchParams.getAll("price").length
+									) {
+										return (
+											item.category.includes(category) &&
+											item.size.includes(
+												searchParams.get("size")
+											) &&
+											+item.price >=
+												searchParams.getAll(
+													"price"
+												)[0] &&
+											+item.price <=
+												searchParams.getAll("price")[1]
+										);
+									} else return item;
+								})
+								.map((item) => (
+									<Grid
+										key={item.id}
+										size={{
+											xs: 12,
+											sm: 6,
+											lg: 4,
+											xl: 3,
+										}}
+									>
+										<ProductCard product={item} />
+									</Grid>
+								))}
 						</Grid>
 					</Grid>
 				</Grid>
 			</Container>
-			<DrawerFilter open={mobileOpen} handler={handleDrawerToggle} />
+			<DrawerFilter
+				open={mobileOpen}
+				handler={handleDrawerToggle}
+				searchParams={searchParams}
+				setSearchParams={setSearchParams}
+			/>
 		</section>
 	);
 }
