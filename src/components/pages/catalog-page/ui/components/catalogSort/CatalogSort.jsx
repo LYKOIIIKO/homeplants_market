@@ -22,7 +22,7 @@ function CatalogSort({ sort, setSort, searchParams, setSearchParams }) {
 	};
 
 	useEffect(() => {
-		if (!location.search) setSort("saleRate-desc");
+		if (!location.search || !searchParams.has('sort')) setSort("saleRate-desc");
 	}, [location.search]);
 
 	return (

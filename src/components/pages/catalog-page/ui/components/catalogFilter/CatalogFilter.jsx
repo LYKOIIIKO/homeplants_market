@@ -110,10 +110,8 @@ function CatalogFilter({ searchParams, setSearchParams }) {
 	}, [categoryId]);
 
 	useEffect(() => {
-		if (location.search == "") {
-			setPrice([0, 1000]);
-			setSize("");
-		}
+		if (!location.search || !searchParams.has("price")) setPrice([0, 1000]);
+		if (!location.search || !searchParams.has("size")) setSize("");
 	}, [location.search]);
 
 	return (

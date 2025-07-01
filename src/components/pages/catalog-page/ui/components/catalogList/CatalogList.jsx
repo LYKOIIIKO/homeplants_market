@@ -9,7 +9,9 @@ import ProductCard from "../productCard/ProductCard";
 
 function CatalogList({ category, searchParams, setSearchParams }) {
 	const [mobileOpen, setMobileOpen] = useState(false);
-	const [sort, setSort] = useState(searchParams.get("sort") || "saleRate-desc");
+	const [sort, setSort] = useState(
+		searchParams.get("sort") || "saleRate-desc"
+	);
 
 	const handleDrawerToggle = () => {
 		setMobileOpen((prevState) => !prevState);
@@ -31,55 +33,13 @@ function CatalogList({ category, searchParams, setSearchParams }) {
 	let searchFilterStatus = searchParams.get("search") ? true : false,
 		searchFilter = searchParams.get("search");
 
-	let productsSearched = products.filter((item) =>
-		item.title.toLowerCase().includes(searchFilter)
-	);
-
-	let productsSearchedFiltered = productsSearched.filter((item) => {
-		switch (JSON.stringify(filterStatus)) {
-			case '{"category":true,"price":true,"size":true}':
-				return (
-					item.category == category &&
-					item.price >= priceFilter[0] &&
-					item.price <= priceFilter[1] &&
-					item.size == sizeFilter
-				);
-				break;
-			case '{"category":true,"price":true,"size":false}':
-				return (
-					item.category == category &&
-					item.price >= priceFilter[0] &&
-					item.price <= priceFilter[1]
-				);
-				break;
-			case '{"category":true,"price":false,"size":true}':
-				return item.category == category && item.size == sizeFilter;
-				break;
-			case '{"category":true,"price":false,"size":false}':
-				return item.category == category;
-				break;
-			case '{"category":false,"price":true,"size":true}':
-				return (
-					item.price >= priceFilter[0] &&
-					item.price <= priceFilter[1] &&
-					item.size == sizeFilter
-				);
-				break;
-			case '{"category":false,"price":false,"size":true}':
-				return item.size == sizeFilter;
-				break;
-			case '{"category":false,"price":true,"size":false}':
-				return (
-					item.price >= priceFilter[0] && item.price <= priceFilter[1]
-				);
-				break;
-
-			default:
-				return item;
-		}
+	let productsSearched = products.filter((item) => {
+		if (searchFilterStatus)
+			return item.title.toLowerCase().includes(searchFilter);
+		else return item;
 	});
 
-	let productsFiltered = products.filter((item) => {
+	let productsFiltered = productsSearched.filter((item) => {
 		switch (JSON.stringify(filterStatus)) {
 			case '{"category":true,"price":true,"size":true}':
 				return (
@@ -186,69 +146,37 @@ function CatalogList({ category, searchParams, setSearchParams }) {
 							spacing={5}
 							id="catalog-list"
 						>
-							{searchFilterStatus &&
-								productsSearchedFiltered
-									.sort((a, b) => {
-										switch (sort) {
-											case "saleRate-desc":
-												return a.saleRate - b.saleRate;
-												break;
-											case "price-asc":
-												return a.price - b.price;
-												break;
-											case "price-desc":
-												return b.price - a.price;
-												break;
-											default:
-												break;
-										}
-									})
-									.map((item) => (
-										<Grid
-											key={item.id}
-											size={{
-												xs: 12,
-												sm: 6,
-												lg: 4,
-												xl: 3,
-											}}
-										>
-											<ProductCard product={item} />
-										</Grid>
-									))}
+							{productsFiltered
+								.sort((a, b) => {
+									switch (sort) {
+										case "saleRate-desc":
+											return a.saleRate - b.saleRate;
+											break;
+										case "price-asc":
+											return a.price - b.price;
+											break;
+										case "price-desc":
+											return b.price - a.price;
+											break;
+										default:
+											break;
+									}
+								})
+								.map((item) => (
+									<Grid
+										key={item.id}
+										size={{
+											xs: 12,
+											sm: 6,
+											lg: 4,
+											xl: 3,
+										}}
+									>
+										<ProductCard product={item} />
+									</Grid>
+								))}
 
-							{!searchFilterStatus &&
-								productsFiltered
-									.sort((a, b) => {
-										switch (sort) {
-											case "saleRate-desc":
-												return a.saleRate - b.saleRate;
-												break;
-											case "price-asc":
-												return a.price - b.price;
-												break;
-											case "price-desc":
-												return b.price - a.price;
-												break;
-											default:
-												break;
-										}
-									})
-									.map((item) => (
-										<Grid
-											key={item.id}
-											size={{
-												xs: 12,
-												sm: 6,
-												lg: 4,
-												xl: 3,
-											}}
-										>
-											<ProductCard product={item} />
-										</Grid>
-									))}
-
-							{!productsFiltered.length && (
+							{!!products.length && !productsFiltered.length && (
 								<Typography variant="h5">
 									Товаров не найдено{" "}
 								</Typography>

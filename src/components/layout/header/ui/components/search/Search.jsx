@@ -5,11 +5,10 @@ import { useNavigate } from "react-router";
 
 function Search() {
 	const navigate = useNavigate();
-
 	const [search, setSearch] = useState("");
 
 	const handleSearch = (e) => {
-		if (e.key === "Enter" || e.type === "click") {
+		if (e.key === "Enter" && search || e.type === "click" && search) {
 			navigate(`/catalog/?search=${search.toLowerCase()}`);
 			setSearch("");
 		}
