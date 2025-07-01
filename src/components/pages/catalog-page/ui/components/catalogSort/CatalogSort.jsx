@@ -1,30 +1,49 @@
 import { Box, FormControl, MenuItem, Select } from "@mui/material";
-import { useState } from "react";
+import { useEffect } from "react";
+import { useLocation } from "react-router";
 
-function CatalogSort() {
- const [sort, setSort] = useState('5');
+function CatalogSort({ sort, setSort, searchParams, setSearchParams }) {
+	const location = useLocation();
 
-  const handleChange = (event) => {
-    setSort(event.target.value);
-  };
+	const handleChange = (e) => {
+		e.preventDefault();
+		let value = e.target.value;
+		setSort(value);
+        
+		if (location.search && searchParams.get("sort") === null) {
+			setSearchParams(`${location.search}&sort=${value}`);
+		} else if (location.search && searchParams.get("sort") != null) {
+			let searchParamsStr = location.search.replace(
+				/sort=(.*?)(?:&|$)/,
+				`sort=${value}&`
+			);
+			setSearchParams(searchParamsStr);
+		} else setSearchParams({ sort: value });
+	};
 
-  return (
-    <Box sx={{ minWidth: 120 }}>
-      <FormControl size="small" >
-        <Select
-          labelId="catalog_sort_selector_label"
-          id="catalog_sort_selector"
-          value={sort}
-          onChange={handleChange}
-        >
-          <MenuItem value={1}>По цене (сначала дороже)</MenuItem>
-          <MenuItem value={2}>По цене (сначала дешевле)</MenuItem>
-          <MenuItem value={3}>По новизне</MenuItem>
-		  <MenuItem value={4}>По скидке</MenuItem>
-		  <MenuItem value={5}>По популярности</MenuItem>
-        </Select>
-      </FormControl>
-    </Box>
-  );
+	useEffect(() => {
+		if (!location.search) setSort("saleRate-desc");
+	}, [location.search]);
+
+	return (
+		<Box sx={{ minWidth: 120 }}>
+			<FormControl size="small">
+				<Select
+					aria-labelledby="catalog-sort-group"
+					name="catalog-sort"
+					value={sort}
+					onChange={handleChange}
+				>
+					<MenuItem value={"price-desc"}>
+						По цене (сначала дороже)
+					</MenuItem>
+					<MenuItem value={"price-asc"}>
+						По цене (сначала дешевле)
+					</MenuItem>
+					<MenuItem value={"saleRate-desc"}>По популярности</MenuItem>
+				</Select>
+			</FormControl>
+		</Box>
+	);
 }
-export default CatalogSort
+export default CatalogSort;

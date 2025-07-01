@@ -7,6 +7,7 @@ import navigationStore from "../../../../../../store/navigationStore";
 import styles from "./Navigation.module.css";
 
 function Navigation() {
+
 	const menuItems = [
 		{ id: 0, name: "каталог", link: "/catalog", dropMenu: true },
 		{ id: 1, name: "блог", link: "/blog", dropMenu: false },

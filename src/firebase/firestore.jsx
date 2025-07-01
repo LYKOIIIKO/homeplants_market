@@ -23,6 +23,7 @@ const catalogTest = [
 		description:
 			"Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolores mollitia quam amet culpa tenetur non perferendis eos minus hic quo.",
 		size: "small",
+		saleRate: 50
 	},
 	{
 		category: "indoor-plants",
@@ -34,6 +35,7 @@ const catalogTest = [
 		description:
 			"Lorem ipsum dolor sit amet consectetur adipisicing elit. Vero beatae, rerum obcaecati ipsum quos quibusdam excepturi omnis? Ratione quaerat illum minima alias ea!",
 		size: "middle",
+		saleRate: 10
 	},
 	{
 		category: "outdoor-plants",
@@ -45,6 +47,7 @@ const catalogTest = [
 		description:
 			"Lorem ipsum dolor sit amet consectetur adipisicing elit. Vero beatae, rerum obcaecati ipsum quos quibusdam excepturi omnis? Ratione quaerat illum minima alias ea!",
 		size: "small",
+		saleRate: 70
 	},
 	{
 		category: "outdoor-plants",
@@ -58,6 +61,7 @@ const catalogTest = [
 		description:
 			"Райская птица считается королевой мира комнатных растений. Это крупное, вертикальное растение добавит вашему пространству богатый тропический колорит, поскольку его глянцевые бананообразные листья разлетаются веером. Оно относительно выносливо и адаптируется к широкому спектру условий освещения от прямого солнца до слабого, непрямого света, но будет процветать на солнечном месте.",
 		size: "large",
+		saleRate: 80
 	},
 	{
 		category: "air-purifying-plants",
@@ -69,6 +73,7 @@ const catalogTest = [
 		description:
 			"Lorem ipsum dolor sit amet consectetur adipisicing elit. Vero beatae, rerum obcaecati ipsum quos quibusdam excepturi omnis? Ratione quaerat illum minima alias ea!",
 		size: "middle",
+		saleRate: 80
 	},
 	{
 		category: "planters-and-pots",
@@ -80,6 +85,7 @@ const catalogTest = [
 		description:
 			"Lorem ipsum dolor sit amet consectetur adipisicing elit. Vero beatae, rerum obcaecati ipsum quos quibusdam excepturi omnis? Ratione quaerat illum minima alias ea!",
 		size: "small",
+		saleRate: 90
 	},
 	{
 		category: "gardening-tools",
@@ -91,6 +97,7 @@ const catalogTest = [
 		description:
 			"Lorem ipsum dolor sit amet consectetur adipisicing elit. Vero beatae, rerum obcaecati ipsum quos quibusdam excepturi omnis? Ratione quaerat illum minima alias ea!",
 		size: "",
+		saleRate: 100
 	},
 ];
 

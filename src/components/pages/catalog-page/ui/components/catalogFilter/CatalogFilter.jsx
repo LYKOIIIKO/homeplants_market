@@ -1,6 +1,7 @@
 import ExpandMoreIcon from "@mui/icons-material/ExpandMore";
 import {
 	Accordion,
+	AccordionActions,
 	AccordionDetails,
 	AccordionSummary,
 	Box,
@@ -14,15 +15,14 @@ import {
 } from "@mui/material";
 import { observer } from "mobx-react-lite";
 import { useEffect, useState } from "react";
-import {
-	useNavigate,
-	useParams
-} from "react-router";
+import { useLocation, useNavigate, useParams } from "react-router";
 import navigationStore from "../../../../../../store/navigationStore";
 
-function CatalogFilter({searchParams, setSearchParams}) {
+function CatalogFilter({ searchParams, setSearchParams }) {
 	const { categoryId } = useParams();
-	
+
+	const location = useLocation();
+
 	const navigate = useNavigate();
 
 	const [category, setCategory] = useState("");
@@ -35,17 +35,12 @@ function CatalogFilter({searchParams, setSearchParams}) {
 
 	const [size, setSize] = useState(searchParams.get("size"));
 
-	const [params, setParams] = useState(
-		!searchParams.toString() && !size && price != [0, 1000]
-			? {}
-			: { price: price, size: size }
-	);
-
 	const { navigation } = navigationStore;
 
-	const handleChangeCategory = (event) => {
-		const value = event.target.value;
-		setCategory(event.target.value);
+	const handleChangeCategory = (e) => {
+		e.preventDefault();
+		const value = e.target.value;
+		setCategory(e.target.value);
 		navigate(
 			value == ""
 				? `/catalog?${searchParams.toString()} `
@@ -53,22 +48,41 @@ function CatalogFilter({searchParams, setSearchParams}) {
 		);
 	};
 
-	const handleChangeParams = (e, value) => {
+	const handleChangePrice = (e, value) => {
 		e.preventDefault();
-		const filterName = e.target.name;
+		setPrice(value);
 
-		if (filterName == "filter-price") {
-			setParams((prev) => ({ ...prev, price: value }));
-			setPrice(value);
-		}
-		if (filterName == "filter-size") {
-			setParams((prev) => ({ ...prev, size: value }));
-			setSize(value);
-		}
+		if (location.search && !searchParams.getAll("price").length) {
+			setSearchParams(
+				`${location.search}&price=${value[0]}&price=${value[1]}`
+			);
+		} else if (location.search && searchParams.getAll("price").length) {
+			let searchParamsStr = location.search.replace(
+				/price=(.*?)(?:&|$)/g,
+				``
+			);
+			setSearchParams(
+				`${searchParamsStr}&price=${value[0]}&price=${value[1]}`
+			);
+		} else setSearchParams({ price: value });
+	};
+
+	const handleChangeSize = (e, value) => {
+		e.preventDefault();
+		setSize(value);
+
+		if (location.search && !searchParams.get("size")) {
+			setSearchParams(`${location.search}&size=${value}`);
+		} else if (location.search && searchParams.get("size")) {
+			let searchParamsStr = location.search.replace(
+				/size=(.*?)(?:&|$)/g,
+				`size=${value}&`
+			);
+			setSearchParams(searchParamsStr);
+		} else setSearchParams({ size: value });
 	};
 
 	const handleClearParams = () => {
-		setParams({});
 		setSearchParams({});
 		setPrice([0, 1000]);
 		setSize("");
@@ -76,13 +90,31 @@ function CatalogFilter({searchParams, setSearchParams}) {
 		navigate("/catalog");
 	};
 
+	const handleClearPrice = () => {
+		setPrice([0, 1000]);
+		let searchParamsStr = location.search.replace(
+			/price=(.*?)(?:&|$)/g,
+			``
+		);
+		setSearchParams(searchParamsStr);
+	};
+
+	const handleClearSize = () => {
+		setSize("");
+		let searchParamsStr = location.search.replace(/size=(.*?)(?:&|$)/g, ``);
+		setSearchParams(searchParamsStr);
+	};
+
 	useEffect(() => {
 		setCategory(categoryId == undefined ? "" : categoryId);
 	}, [categoryId]);
 
 	useEffect(() => {
-		if (Object.keys(params).length != 0) setSearchParams(params);
-	}, [params]);
+		if (location.search == "") {
+			setPrice([0, 1000]);
+			setSize("");
+		}
+	}, [location.search]);
 
 	return (
 		<Box>
@@ -145,13 +177,23 @@ function CatalogFilter({searchParams, setSearchParams}) {
 							value={price}
 							max={1000}
 							step={10}
-							onChange={handleChangeParams}
+							onChange={handleChangePrice}
 							valueLabelDisplay="auto"
 						/>
 						<Typography textAlign="center">
 							{price[0]} руб. - {price[1]} руб.
 						</Typography>
 					</AccordionDetails>
+					<AccordionActions>
+						<Button
+							onClick={handleClearPrice}
+							disabled={
+								price[0] > 0 || price[1] < 1000 ? false : true
+							}
+						>
+							сбросить
+						</Button>
+					</AccordionActions>
 				</Accordion>
 			</Box>
 			<Box mb={3}>
@@ -171,7 +213,7 @@ function CatalogFilter({searchParams, setSearchParams}) {
 								aria-labelledby="filter-size-group"
 								name="filter-size"
 								value={size}
-								onChange={handleChangeParams}
+								onChange={handleChangeSize}
 							>
 								<FormControlLabel
 									value="small"
@@ -191,6 +233,14 @@ function CatalogFilter({searchParams, setSearchParams}) {
 							</RadioGroup>
 						</FormControl>
 					</AccordionDetails>
+					<AccordionActions>
+						<Button
+							onClick={handleClearSize}
+							disabled={size ? false : true}
+						>
+							сбросить
+						</Button>
+					</AccordionActions>
 				</Accordion>
 			</Box>
 			<Box sx={{ display: "flex", justifyContent: "center" }}>
