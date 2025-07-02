@@ -8,12 +8,12 @@ import {
 } from "@mui/material";
 import { Link } from "react-router";
 
-function NewsCard({ item }) {
+function NewsCard({ item, img }) {
 	return (
 		<Card sx={{ maxWidth: 500, p: 2 }}>
 			<CardMedia
 				sx={{ height: 200 }}
-				image={item.img}
+				image={img}
 				title={item.title}
 			/>
 			<CardContent

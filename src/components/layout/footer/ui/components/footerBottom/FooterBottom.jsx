@@ -1,11 +1,11 @@
-import { Grid, IconButton, List, ListItem, Typography } from "@mui/material";
 import InstagramIcon from "@mui/icons-material/Instagram";
 import PinterestIcon from "@mui/icons-material/Pinterest";
 import YouTubeIcon from "@mui/icons-material/YouTube";
-import Visa from "../../../../../../assets/payments_visa.svg?react";
-import MasterCard from "../../../../../../assets/payments_mastercart.svg?react";
-import Belcart from "../../../../../../assets/payments_belcart.svg?react";
-import ERIP from "../../../../../../assets/payments_erip.svg?react";
+import { Grid, IconButton, List, ListItem, Typography } from "@mui/material";
+import Belcart from "../../../../../../assets/footer/payments_belcart.svg?react";
+import ERIP from "../../../../../../assets/footer/payments_erip.svg?react";
+import MasterCard from "../../../../../../assets/footer/payments_mastercart.svg?react";
+import Visa from "../../../../../../assets/footer/payments_visa.svg?react";
 
 function FooterBottom() {
 	return (

@@ -6,40 +6,7 @@ import navigationStore from "../../../../../../store/navigationStore";
 function SectionCategories() {
 	const navigate = useNavigate();
 
-	const {navigation} = navigationStore
-
-	const cardItems = [
-		{
-			name: "каталог",
-			items: [
-				{
-					title: "Комнатные растения",
-					link: "/catalog/indoor-plants",
-					img: "url(src/assets/index_page/category_1.jpg)",
-				},
-				{
-					title: "Уличные растения",
-					link: "/catalog/outdoor-plants",
-					img: "url(src/assets/index_page/category_2.jpg)",
-				},
-				{
-					title: "Очищающие воздух растения",
-					link: "/catalog/air-purifying-plants",
-					img: "url(src/assets/index_page/category_3.jpg)",
-				},
-				{
-					title: "Горшки и кашпо",
-					link: "/catalog/planters-and-pots",
-					img: "url(src/assets/index_page/category_4.jpg)",
-				},
-				{
-					title: "Инструмент",
-					link: "/catalog/tools",
-					img: "url(src/assets/index_page/category_5.jpg)",
-				},
-			],
-		},
-	];
+	const { navigation } = navigationStore;
 
 	return (
 		<section className="section-categories" style={{ margin: "40px 0" }}>
@@ -49,7 +16,8 @@ function SectionCategories() {
 						if (obj.name == "каталог")
 							return obj.items.map((item) => {
 								return (
-									<Grid key={item.name}
+									<Grid
+										key={item.name}
 										onClick={() => navigate(item.link)}
 										minHeight="300px"
 										size={{
@@ -78,12 +46,14 @@ function SectionCategories() {
 														"center",
 													cursor: "pointer",
 													overflow: "hidden",
-													transition: 'all .5s ease'
+													transition: "all .5s ease",
 												},
 												{
 													"&:hover": {
-														boxShadow: '1px 1px 10px #666',
-														transition: 'all .5s ease'
+														boxShadow:
+															"1px 1px 10px #666",
+														transition:
+															"all .5s ease",
 													},
 												},
 											]}

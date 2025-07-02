@@ -1,4 +1,5 @@
 import { Container } from "@mui/material";
+import * as images from '../../../../assets';
 import s from "./index.module.css";
 function PageNotFound() {
 	return (
@@ -11,7 +12,7 @@ function PageNotFound() {
 				<div className={s.img}>
 					<img
 						className={s.imgCat}
-						src="/src/assets/404_page/cat.png"
+						src={images.Img404}
 						alt="cat"
 					/>
 					<h1 className={s.okak}>ОКАК</h1>
