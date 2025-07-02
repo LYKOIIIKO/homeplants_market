@@ -43,9 +43,13 @@ function CheckoutPage() {
 
 	return (
 		<Box>
-			<Typography variant="h4" textAlign="center" my={3}>
-				{!!cart.length ? 'Оформление заказа' : 'Заказ успешно создан'}
-			</Typography>
+			<Container maxWidth="xl">
+				<Typography variant="h5" textAlign="center" my={3}>
+					{!!cart.length
+						? "Оформление заказа"
+						: "Заказ успешно создан. Наш менеджер свяжется с Вами для подтверждения заказа."}
+				</Typography>
+			</Container>
 			<Divider />
 			<Container maxWidth="xl">
 				{!!cart.length && (

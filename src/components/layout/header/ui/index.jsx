@@ -1,7 +1,7 @@
 import MenuIcon from "@mui/icons-material/Menu";
 import { AppBar, Container, Grid, IconButton } from "@mui/material";
-import { useState } from "react";
-import { Link } from "react-router";
+import { useEffect, useState } from "react";
+import { Link, useLocation } from "react-router";
 import Logo from "../../../../assets/logo/Logo";
 import DrawerMenu from "./components/drawerMenu/DrawerMenu";
 import Navigation from "./components/navigation/Navigation";
@@ -11,10 +11,16 @@ import "./index.css";
 
 function Header() {
 	const [mobileOpen, setMobileOpen] = useState(false);
+	
+	const location = useLocation()
 
 	const handleDrawerToggle = () => {
 		setMobileOpen((prevState) => !prevState);
 	};
+
+	useEffect(() => {
+	  setMobileOpen(false);
+	}, [location])
 
 	return (
 		<>

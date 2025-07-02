@@ -1,8 +1,13 @@
 import { Box, Button, Container, Grid } from "@mui/material";
+import { observer } from "mobx-react-lite";
 import { useNavigate } from "react-router";
+import navigationStore from "../../../../../../store/navigationStore";
 
 function SectionCategories() {
 	const navigate = useNavigate();
+
+	const {navigation} = navigationStore
+
 	const cardItems = [
 		{
 			name: "каталог",
@@ -40,11 +45,11 @@ function SectionCategories() {
 		<section className="section-categories" style={{ margin: "40px 0" }}>
 			<Container maxWidth="xl">
 				<Grid container spacing={5}>
-					{cardItems?.map((obj) => {
+					{navigation.map((obj) => {
 						if (obj.name == "каталог")
-							return obj.items.map((item, index) => {
+							return obj.items.map((item) => {
 								return (
-									<Grid key={index}
+									<Grid key={item.name}
 										onClick={() => navigate(item.link)}
 										minHeight="300px"
 										size={{
@@ -108,4 +113,4 @@ function SectionCategories() {
 		</section>
 	);
 }
-export default SectionCategories;
+export default observer(SectionCategories);

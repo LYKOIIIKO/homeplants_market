@@ -1,6 +1,6 @@
 import { Container, Divider } from "@mui/material";
-import FooterTop from "./components/footerTop/FooterTop";
 import FooterBottom from "./components/footerBottom/FooterBottom";
+import FooterTop from "./components/footerTop/FooterTop";
 
 function Footer() {
 	return (

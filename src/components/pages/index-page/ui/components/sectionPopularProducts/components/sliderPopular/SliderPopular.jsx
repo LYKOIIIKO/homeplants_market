@@ -38,7 +38,7 @@ function SliderPopular(props) {
 				}}
 			>
 				{products?.map((item) => {
-					return (
+					if(item.saleRate >= 60) return (
 						<SwiperSlide>
 							<ProductCard key={item.id} product={item} />
 						</SwiperSlide>

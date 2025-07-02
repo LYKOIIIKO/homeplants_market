@@ -134,9 +134,7 @@ function CatalogList({ category, searchParams, setSearchParams }) {
 						</Grid>
 						{searchFilterStatus && (
 							<Typography variant="h5" my={2}>
-								{productsSearched.length
-									? `Найдено по запросу "${searchFilter}"`
-									: `По запросу "${searchFilter}" товаров не найдено`}
+								Найдено по запросу "{searchFilter}"
 							</Typography>
 						)}
 						<Grid

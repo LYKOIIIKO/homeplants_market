@@ -1,3 +1,4 @@
+import DeleteIcon from '@mui/icons-material/Delete';
 import {
 	Box,
 	Button,
@@ -29,14 +30,14 @@ function CartPage() {
 			{!!cart.length && (
 				<>
 					<Divider />
-					<Container maxWidth="xl">
+					<Container maxWidth="xl" sx={{display:'flex', flexDirection:{xs:'column', sm: 'row'},alignItems:'center', justifyContent:'space-between', p:3, gap:3}}>
+						<Button size="large" startIcon={<DeleteIcon />} variant='outlined' onClick={() => cartStore.clearAll()}>очистить корзину</Button>
 						<Box
 							sx={{
 								display: "flex",
 								flexDirection: "column",
 								alignItems: "flex-end",
 								gap: 3,
-								my: 2,
 							}}
 						>
 							<Typography variant="h5" textTransform="uppercase">

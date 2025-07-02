@@ -35,7 +35,7 @@ function DrawerMenu(props) {
 			}}
 		>
 			<Search />
-			<Box onClick={handler} sx={{ textAlign: "center" }}>
+			<Box sx={{ textAlign: "center" }}>
 				<Divider />
 				<List>
 					<ListItem display="flex" sx={{ justifyContent: "center" }}>
@@ -85,7 +85,7 @@ function DrawerMenu(props) {
 							display="flex"
 							sx={{ justifyContent: "center" }}
 						>
-							<Link to="/favorite">
+							<Link to="/wishlist">
 								<Typography
 									variant="subtitle1"
 									textTransform="uppercase"

@@ -1,3 +1,4 @@
+import ExpandMoreIcon from "@mui/icons-material/ExpandMore";
 import {
 	Accordion,
 	AccordionDetails,
@@ -9,7 +10,6 @@ import {
 } from "@mui/material";
 import { Link } from "react-router";
 import Logo from "../../../../../../assets/logo/Logo";
-import ExpandMoreIcon from "@mui/icons-material/ExpandMore";
 
 function FooterTop() {
 	return (
@@ -153,7 +153,7 @@ function FooterTop() {
 								</Link>
 							</ListItem>
 							<ListItem sx={{ px: 0 }}>
-								<Link to="/favorite">
+								<Link to="/wishlist">
 									<Typography variant="body2">
 										Избранное
 									</Typography>
@@ -185,7 +185,7 @@ function FooterTop() {
 						</Link>
 					</ListItem>
 					<ListItem sx={{ px: 0 }}>
-						<Link to="/favorite">
+						<Link to="/wishlist">
 							<Typography variant="body2">Избранное</Typography>
 						</Link>
 					</ListItem>
