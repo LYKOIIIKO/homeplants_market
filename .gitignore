@@ -29,4 +29,4 @@ vite-env.d.ts
 
 .vscode
 
-src/firebase/firestore.jsx
+firestore.jsx
