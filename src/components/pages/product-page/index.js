@@ -1,3 +1,3 @@
-import ProductPage from "./ui";
+import ProductPage from "./ui"
 
-export default ProductPage;
+export default ProductPage

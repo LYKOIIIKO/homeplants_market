@@ -1,8 +1,8 @@
-import { ThemeProvider, createTheme } from "@mui/material/styles";
-import { observer } from "mobx-react-lite";
-import { BrowserRouter } from "react-router";
-import "./App.css";
-import Layout from "./components/layout";
+import { ThemeProvider, createTheme } from "@mui/material/styles"
+import { observer } from "mobx-react-lite"
+import { BrowserRouter } from "react-router"
+import "./App.css"
+import Layout from "./components/layout"
 
 const theme = createTheme({
 	palette: {
@@ -35,7 +35,7 @@ const theme = createTheme({
 			color: "#c2ff00",
 		},
 	},
-});
+})
 
 function App() {
 	return (
@@ -44,7 +44,7 @@ function App() {
 				<Layout />
 			</ThemeProvider>
 		</BrowserRouter>
-	);
+	)
 }
 
-export default observer(App);
+export default observer(App)

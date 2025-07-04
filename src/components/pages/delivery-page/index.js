@@ -1,3 +1,3 @@
-import DeliveryPage from "./ui";
+import DeliveryPage from "./ui"
 
-export default DeliveryPage;
+export default DeliveryPage

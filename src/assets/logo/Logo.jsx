@@ -394,6 +394,6 @@ function Logo() {
 				</g>
 			</g>
 		</svg>
-	);
+	)
 }
-export default Logo;
+export default Logo

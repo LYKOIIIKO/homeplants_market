@@ -1,27 +1,27 @@
-import ExpandMoreIcon from "@mui/icons-material/ExpandMore";
+import ExpandMoreIcon from "@mui/icons-material/ExpandMore"
 import {
-  Accordion,
-  AccordionDetails,
-  AccordionSummary,
-  Box,
-  Button,
-  Divider,
-  List,
-  ListItem,
-  TextField,
-  Typography,
-} from "@mui/material";
-import { observer } from "mobx-react-lite";
-import cartStore from "../../../../../../store/cartStore";
-import catalogStore from "../../../../../../store/catalogStore";
-import CheckoutItem from "../checkoutItem/CheckoutItem";
+	Accordion,
+	AccordionDetails,
+	AccordionSummary,
+	Box,
+	Button,
+	Divider,
+	List,
+	ListItem,
+	TextField,
+	Typography,
+} from "@mui/material"
+import { observer } from "mobx-react-lite"
+import cartStore from "../../../../../../store/cartStore"
+import catalogStore from "../../../../../../store/catalogStore"
+import CheckoutItem from "../checkoutItem/CheckoutItem"
 
 function CheckoutTotal() {
-	const { cart } = cartStore;
-	const { products } = catalogStore;
+	const { cart } = cartStore
+	const { products } = catalogStore
 
-	const cartTotal = cartStore.getCartTotal(products);
-	const cartCount = cartStore.getCartCount();
+	const cartTotal = cartStore.getCartTotal(products)
+	const cartCount = cartStore.getCartCount()
 
 	return (
 		<Box>
@@ -31,17 +31,11 @@ function CheckoutTotal() {
 					aria-controls="checkout-total"
 					id="checkout-total"
 				>
-					<Typography
-						variant="body1"
-						textTransform="uppercase"
-						fontWeight="bold"
-					>
+					<Typography variant="body1" textTransform="uppercase" fontWeight="bold">
 						Ваш заказ {cartTotal || " "} руб.
 					</Typography>
 				</AccordionSummary>
-				<AccordionDetails
-					sx={{ display: "flex", flexDirection: "column", gap: 3 }}
-				>
+				<AccordionDetails sx={{ display: "flex", flexDirection: "column", gap: 3 }}>
 					<List>
 						{cart?.map((item) => {
 							return products?.map((product) => {
@@ -49,15 +43,12 @@ function CheckoutTotal() {
 									return (
 										<Box key={item.id}>
 											<ListItem sx={{ p: 0 }}>
-												<CheckoutItem
-													item={product}
-													count={item.count}
-												/>
+												<CheckoutItem item={product} count={item.count} />
 											</ListItem>
 											<Divider />
 										</Box>
-									);
-							});
+									)
+							})
 						})}
 					</List>
 					<Box
@@ -115,6 +106,6 @@ function CheckoutTotal() {
 				</AccordionDetails>
 			</Accordion>
 		</Box>
-	);
+	)
 }
-export default observer(CheckoutTotal);
+export default observer(CheckoutTotal)

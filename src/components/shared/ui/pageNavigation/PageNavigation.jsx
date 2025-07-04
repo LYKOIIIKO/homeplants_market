@@ -1,16 +1,9 @@
-import { Breadcrumbs, Container, Link } from "@mui/material";
-import { useNavigate } from "react-router";
-import s from "./PageNavigation.module.css";
+import { Breadcrumbs, Container, Link } from "@mui/material"
+import { useNavigate } from "react-router"
+import s from "./PageNavigation.module.css"
 
-function PageNavigation({
-	linkTo,
-	title,
-	categoryLink,
-	categoryTitle,
-	productLink,
-	productTitle,
-}) {
-	const navigate = useNavigate();
+function PageNavigation({ linkTo, title, categoryLink, categoryTitle, productLink, productTitle }) {
+	const navigate = useNavigate()
 	return (
 		<section className={s.container}>
 			<Container maxWidth="xl">
@@ -52,11 +45,7 @@ function PageNavigation({
 							underline="hover"
 							color="inherit"
 							variant="body2"
-							onClick={() =>
-								navigate(
-									`/${linkTo}/${categoryLink}/${productLink}`
-								)
-							}
+							onClick={() => navigate(`/${linkTo}/${categoryLink}/${productLink}`)}
 						>
 							{productTitle}
 						</Link>
@@ -64,6 +53,6 @@ function PageNavigation({
 				</Breadcrumbs>
 			</Container>
 		</section>
-	);
+	)
 }
-export default PageNavigation;
+export default PageNavigation

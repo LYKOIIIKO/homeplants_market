@@ -1,6 +1,6 @@
-import { Container, Divider } from "@mui/material";
-import FooterBottom from "./components/footerBottom/FooterBottom";
-import FooterTop from "./components/footerTop/FooterTop";
+import { Container, Divider } from "@mui/material"
+import FooterBottom from "./components/footerBottom/FooterBottom"
+import FooterTop from "./components/footerTop/FooterTop"
 
 function Footer() {
 	return (
@@ -20,6 +20,6 @@ function Footer() {
 				<FooterBottom />
 			</Container>
 		</footer>
-	);
+	)
 }
-export default Footer;
+export default Footer

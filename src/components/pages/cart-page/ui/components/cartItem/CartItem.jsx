@@ -1,13 +1,13 @@
-import ClearIcon from "@mui/icons-material/Clear";
-import { Grid, IconButton, Typography } from "@mui/material";
-import { observer } from "mobx-react-lite";
-import { useNavigate } from "react-router";
-import cartStore from "../../../../../../store/cartStore";
-import CartCounter from "../cartCounter/CartCounter";
-import s from "./CartItem.module.css";
+import ClearIcon from "@mui/icons-material/Clear"
+import { Grid, IconButton, Typography } from "@mui/material"
+import { observer } from "mobx-react-lite"
+import { useNavigate } from "react-router"
+import cartStore from "../../../../../../store/cartStore"
+import CartCounter from "../cartCounter/CartCounter"
+import s from "./CartItem.module.css"
 
 function CartItem({ item, count }) {
-	const navigate = useNavigate();
+	const navigate = useNavigate()
 
 	return (
 		<Grid
@@ -78,6 +78,6 @@ function CartItem({ item, count }) {
 				<Typography variant="body1">{item.price * count} руб.</Typography>
 			</Grid>
 		</Grid>
-	);
+	)
 }
-export default observer(CartItem);
+export default observer(CartItem)

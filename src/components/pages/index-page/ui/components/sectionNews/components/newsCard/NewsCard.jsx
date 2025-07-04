@@ -1,21 +1,10 @@
-import {
-	Button,
-	Card,
-	CardActions,
-	CardContent,
-	CardMedia,
-	Typography,
-} from "@mui/material";
-import { Link } from "react-router";
+import { Button, Card, CardActions, CardContent, CardMedia, Typography } from "@mui/material"
+import { Link } from "react-router"
 
 function NewsCard({ item, img }) {
 	return (
 		<Card sx={{ maxWidth: 500, p: 2 }}>
-			<CardMedia
-				sx={{ height: 200 }}
-				image={img}
-				title={item.title}
-			/>
+			<CardMedia sx={{ height: 200 }} image={img} title={item.title} />
 			<CardContent
 				sx={{
 					display: "flex",
@@ -24,11 +13,7 @@ function NewsCard({ item, img }) {
 					gap: 1,
 				}}
 			>
-				<Typography
-					variant="subtitle1"
-					textAlign="center"
-					textTransform="uppercase"
-				>
+				<Typography variant="subtitle1" textAlign="center" textTransform="uppercase">
 					{item.date}
 				</Typography>
 				<Typography variant="h5" textAlign="center">
@@ -46,6 +31,6 @@ function NewsCard({ item, img }) {
 				</Link>
 			</CardActions>
 		</Card>
-	);
+	)
 }
-export default NewsCard;
+export default NewsCard

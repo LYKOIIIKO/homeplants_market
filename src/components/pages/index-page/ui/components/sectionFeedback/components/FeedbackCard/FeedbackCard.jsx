@@ -1,8 +1,8 @@
-import FavoriteIcon from "@mui/icons-material/Favorite";
-import FavoriteBorderIcon from "@mui/icons-material/FavoriteBorder";
-import FormatQuoteIcon from "@mui/icons-material/FormatQuote";
-import { Avatar, Box, Paper, Rating, styled, Typography } from "@mui/material";
-import s from "./FeedbackCard.module.css";
+import FavoriteIcon from "@mui/icons-material/Favorite"
+import FavoriteBorderIcon from "@mui/icons-material/FavoriteBorder"
+import FormatQuoteIcon from "@mui/icons-material/FormatQuote"
+import { Avatar, Box, Paper, Rating, styled, Typography } from "@mui/material"
+import s from "./FeedbackCard.module.css"
 
 const StyledRating = styled(Rating)({
 	"& .MuiRating-iconFilled": {
@@ -11,10 +11,10 @@ const StyledRating = styled(Rating)({
 	"& .MuiRating-iconHover": {
 		color: "#ff3d47",
 	},
-});
+})
 
 function FeedbackCard(props) {
-	const { item } = props;
+	const { item } = props
 	return (
 		<Paper variant="elevation" elevation={3} className={s.container}>
 			<FormatQuoteIcon fontSize="large" />
@@ -27,9 +27,7 @@ function FeedbackCard(props) {
 				name="customized-color"
 				defaultValue={4}
 				value={item.userRating}
-				getLabelText={(value) =>
-					`${value} Heart${value !== 1 ? "s" : ""}`
-				}
+				getLabelText={(value) => `${value} Heart${value !== 1 ? "s" : ""}`}
 				precision={0.5}
 				icon={<FavoriteIcon fontSize="inherit" />}
 				emptyIcon={<FavoriteBorderIcon fontSize="inherit" />}
@@ -43,12 +41,12 @@ function FeedbackCard(props) {
 			/>
 
 			<Box className={s.wrapperUserName}>
-				<Typography variant="body1" fontWeight='bold'>{item.userName}</Typography>
-				<Typography variant="subtitle2" >
-					/ {item.userJob}
+				<Typography variant="body1" fontWeight="bold">
+					{item.userName}
 				</Typography>
+				<Typography variant="subtitle2">/ {item.userJob}</Typography>
 			</Box>
 		</Paper>
-	);
+	)
 }
-export default FeedbackCard;
+export default FeedbackCard

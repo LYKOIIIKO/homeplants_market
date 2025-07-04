@@ -1,6 +1,6 @@
-import { Box, Container, Typography } from "@mui/material";
-import * as images from '../../../../../../assets';
-import SliderFeedback from "./components/sliderFeedback/SliderFeedback";
+import { Box, Container, Typography } from "@mui/material"
+import * as images from "../../../../../../assets"
+import SliderFeedback from "./components/sliderFeedback/SliderFeedback"
 
 function SectionFeedback() {
 	const feedback = {
@@ -9,7 +9,7 @@ function SectionFeedback() {
 		userAvatar: images.ImgFeedback1,
 		text: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Earum dolor doloribus quam error voluptas doloremque tempora. Animi dolor doloremque corrupti repudiandae eaque nihil rerum magnam!",
 		userRating: "5",
-	};
+	}
 
 	return (
 		<section className="section-feedback" style={{ margin: "40px 0" }}>
@@ -24,6 +24,6 @@ function SectionFeedback() {
 				</Box>
 			</Container>
 		</section>
-	);
+	)
 }
-export default SectionFeedback;
+export default SectionFeedback

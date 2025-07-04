@@ -1,10 +1,10 @@
-import ArrowBackIosNewIcon from "@mui/icons-material/ArrowBackIosNew";
-import ArrowForwardIosIcon from "@mui/icons-material/ArrowForwardIos";
-import { IconButton } from "@mui/material";
-import { useSwiper } from "swiper/react";
+import ArrowBackIosNewIcon from "@mui/icons-material/ArrowBackIosNew"
+import ArrowForwardIosIcon from "@mui/icons-material/ArrowForwardIos"
+import { IconButton } from "@mui/material"
+import { useSwiper } from "swiper/react"
 
 function MySliderBtns() {
-	const swiper = useSwiper();
+	const swiper = useSwiper()
 	return (
 		<>
 			<IconButton
@@ -34,6 +34,6 @@ function MySliderBtns() {
 				<ArrowForwardIosIcon fontSize="large" color="info" />
 			</IconButton>
 		</>
-	);
+	)
 }
-export default MySliderBtns;
+export default MySliderBtns

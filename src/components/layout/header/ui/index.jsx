@@ -1,25 +1,25 @@
-import MenuIcon from "@mui/icons-material/Menu";
-import { AppBar, Container, Grid, IconButton } from "@mui/material";
-import { useEffect, useState } from "react";
-import { Link, useLocation } from "react-router";
-import Logo from "../../../../assets/logo/Logo";
-import DrawerMenu from "./components/drawerMenu/DrawerMenu";
-import Navigation from "./components/navigation/Navigation";
-import Search from "./components/search/Search";
-import UserButtons from "./components/userButtons/UserButtons";
-import "./index.css";
+import MenuIcon from "@mui/icons-material/Menu"
+import { AppBar, Container, Grid, IconButton } from "@mui/material"
+import { useEffect, useState } from "react"
+import { Link, useLocation } from "react-router"
+import Logo from "../../../../assets/logo/Logo"
+import DrawerMenu from "./components/drawerMenu/DrawerMenu"
+import Navigation from "./components/navigation/Navigation"
+import Search from "./components/search/Search"
+import UserButtons from "./components/userButtons/UserButtons"
+import "./index.css"
 
 function Header() {
-	const [mobileOpen, setMobileOpen] = useState(false);
-	
+	const [mobileOpen, setMobileOpen] = useState(false)
+
 	const location = useLocation()
 
 	const handleDrawerToggle = () => {
-		setMobileOpen((prevState) => !prevState);
-	};
+		setMobileOpen((prevState) => !prevState)
+	}
 
 	useEffect(() => {
-	  setMobileOpen(false);
+		setMobileOpen(false)
 	}, [location])
 
 	return (
@@ -38,10 +38,7 @@ function Header() {
 								<MenuIcon />
 							</IconButton>
 						</Grid>
-						<Grid
-							size={{ xs: 0, lg: 3 }}
-							sx={{ display: { xs: "none", lg: "block" } }}
-						>
+						<Grid size={{ xs: 0, lg: 3 }} sx={{ display: { xs: "none", lg: "block" } }}>
 							<Search />
 						</Grid>
 						<Grid
@@ -63,12 +60,7 @@ function Header() {
 							<Navigation />
 						</Grid>
 
-						<Grid
-							container
-							spacing={1}
-							size={3}
-							justifyContent="flex-end"
-						>
+						<Grid container spacing={1} size={3} justifyContent="flex-end">
 							<UserButtons />
 						</Grid>
 					</Grid>
@@ -77,6 +69,6 @@ function Header() {
 
 			<DrawerMenu open={mobileOpen} handler={handleDrawerToggle} />
 		</>
-	);
+	)
 }
-export default Header;
+export default Header

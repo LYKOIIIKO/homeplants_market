@@ -1,3 +1,3 @@
-import Main from "./ui";
+import Main from "./ui"
 
 export default Main

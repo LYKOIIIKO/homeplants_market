@@ -1,10 +1,10 @@
-import FavoriteBorderIcon from "@mui/icons-material/FavoriteBorder";
-import PersonOutlineOutlinedIcon from "@mui/icons-material/PersonOutlineOutlined";
-import ShoppingCartOutlinedIcon from "@mui/icons-material/ShoppingCartOutlined";
-import { Badge, Grid, IconButton } from "@mui/material";
-import { observer } from "mobx-react-lite";
-import { Link } from "react-router";
-import cartStore from "../../../../../../store/cartStore";
+import FavoriteBorderIcon from "@mui/icons-material/FavoriteBorder"
+import PersonOutlineOutlinedIcon from "@mui/icons-material/PersonOutlineOutlined"
+import ShoppingCartOutlinedIcon from "@mui/icons-material/ShoppingCartOutlined"
+import { Badge, Grid, IconButton } from "@mui/material"
+import { observer } from "mobx-react-lite"
+import { Link } from "react-router"
+import cartStore from "../../../../../../store/cartStore"
 
 function UserButtons() {
 	return (
@@ -28,16 +28,13 @@ function UserButtons() {
 			<Grid>
 				<Link to="/cart">
 					<IconButton>
-						<Badge
-							color="secondary"
-							badgeContent={cartStore.getCartCount()}
-						>
+						<Badge color="secondary" badgeContent={cartStore.getCartCount()}>
 							<ShoppingCartOutlinedIcon />
 						</Badge>
 					</IconButton>
 				</Link>
 			</Grid>
 		</>
-	);
+	)
 }
-export default observer(UserButtons);
+export default observer(UserButtons)

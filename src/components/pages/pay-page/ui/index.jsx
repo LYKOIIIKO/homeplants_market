@@ -1,6 +1,4 @@
 function PayPage() {
-  return (
-	<div>PayPage</div>
-  )
+	return <div>PayPage</div>
 }
 export default PayPage

@@ -1,11 +1,11 @@
-import { Navigation } from "swiper/modules";
-import { Swiper, SwiperSlide } from "swiper/react";
-import SliderBottomBtns from "../../../../components/sectionPopularProducts/components/sliderPopular/SliderBottomBtns";
-import FeedbackCard from "../FeedbackCard/FeedbackCard";
-import "./SliderFeedback.css";
+import { Navigation } from "swiper/modules"
+import { Swiper, SwiperSlide } from "swiper/react"
+import SliderBottomBtns from "../../../../components/sectionPopularProducts/components/sliderPopular/SliderBottomBtns"
+import FeedbackCard from "../FeedbackCard/FeedbackCard"
+import "./SliderFeedback.css"
 
 function SliderFeedback(props) {
-	const { item } = props;
+	const { item } = props
 	return (
 		<>
 			<Swiper
@@ -51,6 +51,6 @@ function SliderFeedback(props) {
 				<SliderBottomBtns />
 			</Swiper>
 		</>
-	);
+	)
 }
-export default SliderFeedback;
+export default SliderFeedback

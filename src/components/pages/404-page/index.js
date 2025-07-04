@@ -1,3 +1,3 @@
-import PageNotFound from "./ui";
+import PageNotFound from "./ui"
 
-export default PageNotFound;
+export default PageNotFound

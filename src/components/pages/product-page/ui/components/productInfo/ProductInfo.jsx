@@ -1,23 +1,25 @@
-import FavoriteBorderIcon from "@mui/icons-material/FavoriteBorder";
-import TelegramIcon from "@mui/icons-material/Telegram";
-import { Box, Button, Grid, IconButton, Typography } from "@mui/material";
-import { observer } from "mobx-react-lite";
-import { useState } from "react";
-import cartStore from "../../../../../../store/cartStore";
-import ProductCounter from "../productCounter/ProductCounter";
-import ProductSliderMain from "../productSliderMain/ProductSliderMain";
+import FavoriteBorderIcon from "@mui/icons-material/FavoriteBorder"
+import TelegramIcon from "@mui/icons-material/Telegram"
+import { Box, Button, Grid, IconButton, Typography } from "@mui/material"
+import { observer } from "mobx-react-lite"
+import { useState } from "react"
+import cartStore from "../../../../../../store/cartStore"
+import ProductCounter from "../productCounter/ProductCounter"
+import ProductSliderMain from "../productSliderMain/ProductSliderMain"
 
 function ProductInfo({ product }) {
-	let [count, setCount] = useState(!cartStore.getItemStatus(product.id) ? 1 : cartStore.getItemCount(product.id));
-	
+	let [count, setCount] = useState(
+		!cartStore.getItemStatus(product.id) ? 1 : cartStore.getItemCount(product.id)
+	)
+
 	const handlerBtnCart = (id) => {
 		if (!cartStore.getItemStatus(id)) {
-			cartStore.setCart(id, count);
+			cartStore.setCart(id, count)
 		} else {
-			cartStore.removeItem(id);
+			cartStore.removeItem(id)
 			setCount(1)
 		}
-	};
+	}
 	return (
 		<>
 			{product && (
@@ -63,15 +65,11 @@ function ProductInfo({ product }) {
 								gap: 3,
 							}}
 						>
-							<ProductCounter
-								itemId={product.id}
-								count={count}
-								setCount={setCount}
-							/>
+							<ProductCounter itemId={product.id} count={count} setCount={setCount} />
 							<Button
-								variant={!cartStore.getItemStatus(product.id)
-									? "contained"
-									: "outlined"}
+								variant={
+									!cartStore.getItemStatus(product.id) ? "contained" : "outlined"
+								}
 								size="large"
 								onClick={() => handlerBtnCart(product.id)}
 							>
@@ -81,10 +79,7 @@ function ProductInfo({ product }) {
 							</Button>
 						</Box>
 
-						<Button
-							variant="text"
-							startIcon={<FavoriteBorderIcon />}
-						>
+						<Button variant="text" startIcon={<FavoriteBorderIcon />}>
 							в избранное
 						</Button>
 
@@ -120,6 +115,6 @@ function ProductInfo({ product }) {
 				</Grid>
 			)}
 		</>
-	);
+	)
 }
-export default observer(ProductInfo);
+export default observer(ProductInfo)

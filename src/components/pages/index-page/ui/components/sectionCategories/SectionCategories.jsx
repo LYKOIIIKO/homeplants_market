@@ -1,12 +1,12 @@
-import { Box, Button, Container, Grid } from "@mui/material";
-import { observer } from "mobx-react-lite";
-import { useNavigate } from "react-router";
-import navigationStore from "../../../../../../store/navigationStore";
+import { Box, Button, Container, Grid } from "@mui/material"
+import { observer } from "mobx-react-lite"
+import { useNavigate } from "react-router"
+import navigationStore from "../../../../../../store/navigationStore"
 
 function SectionCategories() {
-	const navigate = useNavigate();
+	const navigate = useNavigate()
 
-	const { navigation } = navigationStore;
+	const { navigation } = navigationStore
 
 	return (
 		<section className="section-categories" style={{ margin: "40px 0" }}>
@@ -39,29 +39,23 @@ function SectionCategories() {
 													bgcolor: "transparent",
 													backgroundImage: item.img,
 													borderRadius: "5%",
-													backgroundRepeat:
-														"no-repeat",
+													backgroundRepeat: "no-repeat",
 													backgroundSize: "cover",
-													backgroundPosition:
-														"center",
+													backgroundPosition: "center",
 													cursor: "pointer",
 													overflow: "hidden",
 													transition: "all .5s ease",
 												},
 												{
 													"&:hover": {
-														boxShadow:
-															"1px 1px 10px #666",
-														transition:
-															"all .5s ease",
+														boxShadow: "1px 1px 10px #666",
+														transition: "all .5s ease",
 													},
 												},
 											]}
 										>
 											<Button
-												onClick={() =>
-													navigate(item.link)
-												}
+												onClick={() => navigate(item.link)}
 												variant="contained"
 												color="primary"
 												sx={{
@@ -75,12 +69,12 @@ function SectionCategories() {
 											</Button>
 										</Box>
 									</Grid>
-								);
-							});
+								)
+							})
 					})}
 				</Grid>
 			</Container>
 		</section>
-	);
+	)
 }
-export default observer(SectionCategories);
+export default observer(SectionCategories)

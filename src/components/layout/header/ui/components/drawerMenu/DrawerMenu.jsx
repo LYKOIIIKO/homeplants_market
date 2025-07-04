@@ -1,23 +1,16 @@
-import {
-	Box,
-	Divider,
-	Drawer,
-	List,
-	ListItem,
-	Typography,
-} from "@mui/material";
-import { Link } from "react-router";
-import Search from "../search/Search";
+import { Box, Divider, Drawer, List, ListItem, Typography } from "@mui/material"
+import { Link } from "react-router"
+import Search from "../search/Search"
 
 const menuItems = [
 	{ id: 0, name: "каталог", link: "/catalog", dropMenu: true },
 	{ id: 1, name: "блог", link: "/blog", dropMenu: false },
 	{ id: 3, name: "доставка", link: "/delivery", dropMenu: false },
 	{ id: 4, name: "о нас", link: "/about", dropMenu: false },
-];
+]
 
 function DrawerMenu(props) {
-	const { open, handler } = props;
+	const { open, handler } = props
 	return (
 		<Drawer
 			variant="temporary"
@@ -40,25 +33,15 @@ function DrawerMenu(props) {
 				<List>
 					<ListItem display="flex" sx={{ justifyContent: "center" }}>
 						<Link to="/">
-							<Typography
-								variant="subtitle1"
-								textTransform="uppercase"
-							>
+							<Typography variant="subtitle1" textTransform="uppercase">
 								главная
 							</Typography>
 						</Link>
 					</ListItem>
 					{menuItems.map((item) => (
-						<ListItem
-							key={item.id}
-							display="flex"
-							sx={{ justifyContent: "center" }}
-						>
+						<ListItem key={item.id} display="flex" sx={{ justifyContent: "center" }}>
 							<Link to={item.link}>
-								<Typography
-									variant="subtitle1"
-									textTransform="uppercase"
-								>
+								<Typography variant="subtitle1" textTransform="uppercase">
 									{item.name}
 								</Typography>
 							</Link>
@@ -68,28 +51,16 @@ function DrawerMenu(props) {
 				<Box sx={{ display: { xs: "block", md: "none" } }}>
 					<Divider />
 					<List>
-						<ListItem
-							display="flex"
-							sx={{ justifyContent: "center" }}
-						>
+						<ListItem display="flex" sx={{ justifyContent: "center" }}>
 							<Link to="/account">
-								<Typography
-									variant="subtitle1"
-									textTransform="uppercase"
-								>
+								<Typography variant="subtitle1" textTransform="uppercase">
 									аккаунт
 								</Typography>
 							</Link>
 						</ListItem>
-						<ListItem
-							display="flex"
-							sx={{ justifyContent: "center" }}
-						>
+						<ListItem display="flex" sx={{ justifyContent: "center" }}>
 							<Link to="/wishlist">
-								<Typography
-									variant="subtitle1"
-									textTransform="uppercase"
-								>
+								<Typography variant="subtitle1" textTransform="uppercase">
 									избранное
 								</Typography>
 							</Link>
@@ -98,6 +69,6 @@ function DrawerMenu(props) {
 				</Box>
 			</Box>
 		</Drawer>
-	);
+	)
 }
-export default DrawerMenu;
+export default DrawerMenu

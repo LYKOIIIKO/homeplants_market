@@ -1,12 +1,12 @@
-import { Box, Button, Container, Grid, Typography } from "@mui/material";
-import { Link } from "react-router";
-import "swiper/css";
-import "swiper/css/navigation";
-import "swiper/css/pagination";
-import { Keyboard, Navigation, Pagination } from "swiper/modules";
-import { Swiper, SwiperSlide } from "swiper/react";
-import "./MySlider.css";
-import MySliderBtns from "./MySliderBtns";
+import { Box, Button, Container, Grid, Typography } from "@mui/material"
+import { Link } from "react-router"
+import "swiper/css"
+import "swiper/css/navigation"
+import "swiper/css/pagination"
+import { Keyboard, Navigation, Pagination } from "swiper/modules"
+import { Swiper, SwiperSlide } from "swiper/react"
+import "./MySlider.css"
+import MySliderBtns from "./MySliderBtns"
 
 export default function MySlider() {
 	return (
@@ -71,10 +71,7 @@ export default function MySlider() {
 										</Typography>
 									</Box>
 									<Box className="slide-hidebox">
-										<Typography
-											className="slide_homepage_text"
-											variant="body2"
-										>
+										<Typography className="slide_homepage_text" variant="body2">
 											Скидка до 30%
 										</Typography>
 									</Box>
@@ -138,12 +135,9 @@ export default function MySlider() {
 										</Typography>
 									</Box>
 									<Box className="slide-hidebox">
-										<Typography
-											className="slide_homepage_text"
-											variant="body2"
-										>
-											Узнайте как правильно ухаживать за
-											вашими "зелеными друзьями"
+										<Typography className="slide_homepage_text" variant="body2">
+											Узнайте как правильно ухаживать за вашими "зелеными
+											друзьями"
 										</Typography>
 									</Box>
 								</Grid>
@@ -168,5 +162,5 @@ export default function MySlider() {
 				</Swiper>
 			</Box>
 		</section>
-	);
+	)
 }

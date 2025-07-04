@@ -1,23 +1,14 @@
-import {
-	Box,
-	Button,
-	ButtonGroup,
-	MenuItem,
-	TextField,
-	Typography,
-} from "@mui/material";
-import { useFormik } from "formik";
-import { useEffect, useState } from "react";
-import * as Yup from "yup";
-import cartStore from "../../../../../../store/cartStore";
+import { Box, Button, ButtonGroup, MenuItem, TextField, Typography } from "@mui/material"
+import { useFormik } from "formik"
+import { useEffect, useState } from "react"
+import * as Yup from "yup"
+import cartStore from "../../../../../../store/cartStore"
 
 //validation
-const phoneRegExp = /^(\+375|80)(29|25|44|33)(\d{3})(\d{2})(\d{2})$/;
+const phoneRegExp = /^(\+375|80)(29|25|44|33)(\d{3})(\d{2})(\d{2})$/
 
 const validationSchema = Yup.object().shape({
-	email: Yup.string()
-		.email("Некорректный email")
-		.required("Обязательное поле"),
+	email: Yup.string().email("Некорректный email").required("Обязательное поле"),
 	phone: Yup.string()
 		.matches(phoneRegExp, {
 			message: "Некорректный телефон",
@@ -34,39 +25,37 @@ const validationSchema = Yup.object().shape({
 	building: Yup.string().required("Обязательное поле"),
 	housing: Yup.string(),
 	apartment: Yup.string().required("Обязательное поле"),
-	postalIndex: Yup.string()
-		.length(6, "Длина индекса 6 символов")
-		.required("Обязательное поле"),
+	postalIndex: Yup.string().length(6, "Длина индекса 6 символов").required("Обязательное поле"),
 	paymentMethod: Yup.string().required("Обязательное поле"),
-});
+})
 
 function CheckoutForm({ submitForm }) {
-	let [cities, setCities] = useState([]);
+	let [cities, setCities] = useState([])
 
 	useEffect(() => {
 		fetch(
 			"https://gist.githubusercontent.com/alex-oleshkevich/6946d85bf075a6049027306538629794/raw/3986e8e1ade2d4e1186f8fee719960de32ac6955/by-cities.json"
 		)
 			.then((resp) => resp.json())
-			.then((data) => setCities(data[0].regions));
-	}, []);
+			.then((data) => setCities(data[0].regions))
+	}, [])
 
 	let arr = cities.map((region) => {
 		return region.cities.map((city) => {
-			return city.name;
-		});
-	});
+			return city.name
+		})
+	})
 
 	let arrStr = arr.map((item) => {
-		return item.join(", ");
-	});
+		return item.join(", ")
+	})
 
-	let citiesSort = arrStr.join(", ").split(", ").sort();
+	let citiesSort = arrStr.join(", ").split(", ").sort()
 	let regionsSort = cities
 		.map((item) => {
-			return item.name;
+			return item.name
 		})
-		.sort();
+		.sort()
 
 	const formik = useFormik({
 		initialValues: {
@@ -86,11 +75,10 @@ function CheckoutForm({ submitForm }) {
 		},
 		validationSchema,
 		onSubmit: (values) => {
-			submitForm(values);
+			submitForm(values)
 			cartStore.clearAll()
-			
 		},
-	});
+	})
 
 	const {
 		values,
@@ -102,20 +90,12 @@ function CheckoutForm({ submitForm }) {
 		touched,
 		dirty,
 		handleBlur,
-	} = formik;
+	} = formik
 
 	return (
 		<>
-			<Box
-				id="checkout-form"
-				component={"form"}
-				onSubmit={handleSubmit}
-				px={1}
-			>
-				<Box
-					mb={3}
-					sx={{ display: "flex", flexDirection: "column", gap: 3 }}
-				>
+			<Box id="checkout-form" component={"form"} onSubmit={handleSubmit} px={1}>
+				<Box mb={3} sx={{ display: "flex", flexDirection: "column", gap: 3 }}>
 					<Typography variant="h5" textAlign="center">
 						Покупатель
 					</Typography>
@@ -148,10 +128,7 @@ function CheckoutForm({ submitForm }) {
 						autoComplete="on"
 					/>
 				</Box>
-				<Box
-					mb={3}
-					sx={{ display: "flex", flexDirection: "column", gap: 3 }}
-				>
+				<Box mb={3} sx={{ display: "flex", flexDirection: "column", gap: 3 }}>
 					<Typography variant="h5" textAlign="center">
 						Адрес доставки
 					</Typography>
@@ -218,7 +195,7 @@ function CheckoutForm({ submitForm }) {
 								<MenuItem key={region} value={region}>
 									{region}
 								</MenuItem>
-							);
+							)
 						})}
 					</TextField>
 					<TextField
@@ -240,7 +217,7 @@ function CheckoutForm({ submitForm }) {
 								<MenuItem key={city} value={city}>
 									{city}
 								</MenuItem>
-							);
+							)
 						})}
 					</TextField>
 					<TextField
@@ -336,10 +313,7 @@ function CheckoutForm({ submitForm }) {
 						</MenuItem>
 					</TextField>
 				</Box>
-				<ButtonGroup
-					size="large"
-					sx={{ display: "flex", justifyContent: "flex-end" }}
-				>
+				<ButtonGroup size="large" sx={{ display: "flex", justifyContent: "flex-end" }}>
 					<Button variant="contained" disabled={!dirty} type="submit">
 						заказать
 					</Button>
@@ -349,6 +323,6 @@ function CheckoutForm({ submitForm }) {
 				</ButtonGroup>
 			</Box>
 		</>
-	);
+	)
 }
-export default CheckoutForm;
+export default CheckoutForm

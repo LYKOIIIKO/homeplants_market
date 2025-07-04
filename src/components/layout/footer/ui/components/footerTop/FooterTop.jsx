@@ -1,4 +1,4 @@
-import ExpandMoreIcon from "@mui/icons-material/ExpandMore";
+import ExpandMoreIcon from "@mui/icons-material/ExpandMore"
 import {
 	Accordion,
 	AccordionDetails,
@@ -7,9 +7,9 @@ import {
 	List,
 	ListItem,
 	Typography,
-} from "@mui/material";
-import { Link } from "react-router";
-import Logo from "../../../../../../assets/logo/Logo";
+} from "@mui/material"
+import { Link } from "react-router"
+import Logo from "../../../../../../assets/logo/Logo"
 
 function FooterTop() {
 	return (
@@ -29,9 +29,7 @@ function FooterTop() {
 					<Typography variant="body2">+375(29)555 01 23</Typography>
 				</Link>
 				<Link target="_blank" to="mailto:homeplants_market@gmail.com">
-					<Typography variant="body2">
-						homeplants_market@gmail.com
-					</Typography>
+					<Typography variant="body2">homeplants_market@gmail.com</Typography>
 				</Link>
 			</Grid>
 			<Grid size={{ xs: 12, md: 3, lg: 2 }} px={3}>
@@ -55,30 +53,22 @@ function FooterTop() {
 						<List sx={{ py: 0 }}>
 							<ListItem sx={{ px: 0 }}>
 								<Link to="/about">
-									<Typography variant="body2">
-										Контакты
-									</Typography>
+									<Typography variant="body2">Контакты</Typography>
 								</Link>
 							</ListItem>
 							<ListItem sx={{ px: 0 }}>
 								<Link to="/delivery">
-									<Typography variant="body2">
-										Доставка
-									</Typography>
+									<Typography variant="body2">Доставка</Typography>
 								</Link>
 							</ListItem>
 							<ListItem sx={{ px: 0 }}>
 								<Link to="/pay">
-									<Typography variant="body2">
-										Оплата
-									</Typography>
+									<Typography variant="body2">Оплата</Typography>
 								</Link>
 							</ListItem>
 							<ListItem sx={{ px: 0 }}>
 								<Link to="/returns">
-									<Typography variant="body2">
-										Возврат
-									</Typography>
+									<Typography variant="body2">Возврат</Typography>
 								</Link>
 							</ListItem>
 						</List>
@@ -88,11 +78,7 @@ function FooterTop() {
 				<List
 					sx={{ display: { xs: "none", md: "block" } }}
 					subheader={
-						<Typography
-							textTransform="uppercase"
-							variant="body2"
-							mb={2}
-						>
+						<Typography textTransform="uppercase" variant="body2" mb={2}>
 							Информация
 						</Typography>
 					}
@@ -140,23 +126,17 @@ function FooterTop() {
 						<List>
 							<ListItem sx={{ px: 0 }}>
 								<Link to="/account">
-									<Typography variant="body2">
-										Ваш аккаунт
-									</Typography>
+									<Typography variant="body2">Ваш аккаунт</Typography>
 								</Link>
 							</ListItem>
 							<ListItem sx={{ px: 0 }}>
 								<Link to="/orders">
-									<Typography variant="body2">
-										Заказы
-									</Typography>
+									<Typography variant="body2">Заказы</Typography>
 								</Link>
 							</ListItem>
 							<ListItem sx={{ px: 0 }}>
 								<Link to="/wishlist">
-									<Typography variant="body2">
-										Избранное
-									</Typography>
+									<Typography variant="body2">Избранное</Typography>
 								</Link>
 							</ListItem>
 						</List>
@@ -165,11 +145,7 @@ function FooterTop() {
 				<List
 					sx={{ display: { xs: "none", md: "block" } }}
 					subheader={
-						<Typography
-							textTransform="uppercase"
-							variant="body2"
-							mb={2}
-						>
+						<Typography textTransform="uppercase" variant="body2" mb={2}>
 							Аккаунт
 						</Typography>
 					}
@@ -192,6 +168,6 @@ function FooterTop() {
 				</List>
 			</Grid>
 		</Grid>
-	);
+	)
 }
-export default FooterTop;
+export default FooterTop

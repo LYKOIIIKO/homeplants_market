@@ -1,3 +1,3 @@
-import CheckoutPage from "./ui";
+import CheckoutPage from "./ui"
 
 export default CheckoutPage

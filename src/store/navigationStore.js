@@ -1,5 +1,5 @@
-import { makeAutoObservable } from "mobx";
-import * as images from '../assets';
+import { makeAutoObservable } from "mobx"
+import * as images from "../assets"
 
 class NavigationStore {
 	navigation = [
@@ -38,12 +38,12 @@ class NavigationStore {
 				},
 			],
 		},
-	];
+	]
 
 	constructor() {
-		makeAutoObservable(this);
+		makeAutoObservable(this)
 	}
 }
 
-const navigationStore = new NavigationStore();
-export default navigationStore;
+const navigationStore = new NavigationStore()
+export default navigationStore

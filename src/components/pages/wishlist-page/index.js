@@ -1,3 +1,3 @@
-import WishlistPage from "./ui";
+import WishlistPage from "./ui"
 
-export default WishlistPage;
+export default WishlistPage

@@ -1,26 +1,18 @@
-import DeleteIcon from '@mui/icons-material/Delete';
-import {
-	Box,
-	Button,
-	Container,
-	Divider,
-	List,
-	ListItem,
-	Typography,
-} from "@mui/material";
-import { observer } from "mobx-react-lite";
-import { useNavigate } from "react-router";
-import cartStore from "../../../../store/cartStore";
-import catalogStore from "../../../../store/catalogStore";
-import CartItem from "./components/cartItem/CartItem";
+import DeleteIcon from "@mui/icons-material/Delete"
+import { Box, Button, Container, Divider, List, ListItem, Typography } from "@mui/material"
+import { observer } from "mobx-react-lite"
+import { useNavigate } from "react-router"
+import cartStore from "../../../../store/cartStore"
+import catalogStore from "../../../../store/catalogStore"
+import CartItem from "./components/cartItem/CartItem"
 
 function CartPage() {
-	const { cart } = cartStore;
-	const { products } = catalogStore;
+	const { cart } = cartStore
+	const { products } = catalogStore
 
 	const cartTotal = cartStore.getCartTotal(products)
 
-	const navigate = useNavigate();
+	const navigate = useNavigate()
 
 	return (
 		<Box>
@@ -30,8 +22,25 @@ function CartPage() {
 			{!!cart.length && (
 				<>
 					<Divider />
-					<Container maxWidth="xl" sx={{display:'flex', flexDirection:{xs:'column', sm: 'row'},alignItems:'center', justifyContent:'space-between', p:3, gap:3}}>
-						<Button size="large" startIcon={<DeleteIcon />} variant='outlined' onClick={() => cartStore.clearAll()}>очистить корзину</Button>
+					<Container
+						maxWidth="xl"
+						sx={{
+							display: "flex",
+							flexDirection: { xs: "column", sm: "row" },
+							alignItems: "center",
+							justifyContent: "space-between",
+							p: 3,
+							gap: 3,
+						}}
+					>
+						<Button
+							size="large"
+							startIcon={<DeleteIcon />}
+							variant="outlined"
+							onClick={() => cartStore.clearAll()}
+						>
+							очистить корзину
+						</Button>
 						<Box
 							sx={{
 								display: "flex",
@@ -41,9 +50,7 @@ function CartPage() {
 							}}
 						>
 							<Typography variant="h5" textTransform="uppercase">
-								итого{" "}
-								{cartTotal || ' '}{" "}
-								руб.
+								итого {cartTotal || " "} руб.
 							</Typography>
 							<Button
 								variant="contained"
@@ -65,17 +72,14 @@ function CartPage() {
 							if (product.id == item.id)
 								return (
 									<ListItem key={product.id}>
-										<CartItem
-											item={product}
-											count={item.count}
-										/>
+										<CartItem item={product} count={item.count} />
 									</ListItem>
-								);
-						});
+								)
+						})
 					})}
 				</List>
 			</Container>
 		</Box>
-	);
+	)
 }
-export default observer(CartPage);
+export default observer(CartPage)

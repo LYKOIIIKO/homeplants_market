@@ -1,23 +1,21 @@
-import { Button, Container, Grid, Typography } from "@mui/material";
-import { observer } from "mobx-react-lite";
-import { useState } from "react";
-import catalogStore from "../../../../../../store/catalogStore";
-import CatalogFilter from "../catalogFilter/CatalogFilter";
-import CatalogSort from "../catalogSort/CatalogSort";
-import DrawerFilter from "../drawerFilter/DrawerFilter";
-import ProductCard from "../productCard/ProductCard";
+import { Button, Container, Grid, Typography } from "@mui/material"
+import { observer } from "mobx-react-lite"
+import { useState } from "react"
+import catalogStore from "../../../../../../store/catalogStore"
+import CatalogFilter from "../catalogFilter/CatalogFilter"
+import CatalogSort from "../catalogSort/CatalogSort"
+import DrawerFilter from "../drawerFilter/DrawerFilter"
+import ProductCard from "../productCard/ProductCard"
 
 function CatalogList({ category, searchParams, setSearchParams }) {
-	const [mobileOpen, setMobileOpen] = useState(false);
-	const [sort, setSort] = useState(
-		searchParams.get("sort") || "saleRate-desc"
-	);
+	const [mobileOpen, setMobileOpen] = useState(false)
+	const [sort, setSort] = useState(searchParams.get("sort") || "saleRate-desc")
 
 	const handleDrawerToggle = () => {
-		setMobileOpen((prevState) => !prevState);
-	};
+		setMobileOpen((prevState) => !prevState)
+	}
 
-	const { products } = catalogStore;
+	const { products } = catalogStore
 
 	let categoryFilterStatus = category != undefined ? true : false,
 		priceFilterStatus = searchParams.getAll("price").length ? true : false,
@@ -28,16 +26,15 @@ function CatalogList({ category, searchParams, setSearchParams }) {
 			category: categoryFilterStatus,
 			price: priceFilterStatus,
 			size: sizeFilterStatus,
-		};
+		}
 
 	let searchFilterStatus = searchParams.get("search") ? true : false,
-		searchFilter = searchParams.get("search");
+		searchFilter = searchParams.get("search")
 
 	let productsSearched = products.filter((item) => {
-		if (searchFilterStatus)
-			return item.title.toLowerCase().includes(searchFilter);
-		else return item;
-	});
+		if (searchFilterStatus) return item.title.toLowerCase().includes(searchFilter)
+		else return item
+	})
 
 	let productsFiltered = productsSearched.filter((item) => {
 		switch (JSON.stringify(filterStatus)) {
@@ -47,61 +44,52 @@ function CatalogList({ category, searchParams, setSearchParams }) {
 					item.price >= priceFilter[0] &&
 					item.price <= priceFilter[1] &&
 					item.size == sizeFilter
-				);
-				break;
+				)
+				break
 			case '{"category":true,"price":true,"size":false}':
 				return (
 					item.category == category &&
 					item.price >= priceFilter[0] &&
 					item.price <= priceFilter[1]
-				);
-				break;
+				)
+				break
 			case '{"category":true,"price":false,"size":true}':
-				return item.category == category && item.size == sizeFilter;
-				break;
+				return item.category == category && item.size == sizeFilter
+				break
 			case '{"category":true,"price":false,"size":false}':
-				return item.category == category;
-				break;
+				return item.category == category
+				break
 			case '{"category":false,"price":true,"size":true}':
 				return (
 					item.price >= priceFilter[0] &&
 					item.price <= priceFilter[1] &&
 					item.size == sizeFilter
-				);
-				break;
+				)
+				break
 			case '{"category":false,"price":false,"size":true}':
-				return item.size == sizeFilter;
-				break;
+				return item.size == sizeFilter
+				break
 			case '{"category":false,"price":true,"size":false}':
-				return (
-					item.price >= priceFilter[0] && item.price <= priceFilter[1]
-				);
-				break;
+				return item.price >= priceFilter[0] && item.price <= priceFilter[1]
+				break
 
 			default:
-				return item;
+				return item
 		}
-	});
+	})
 
 	return (
 		<section className="section-catalogList" style={{ margin: "20px 0" }}>
 			<Container maxWidth="xl">
 				<Grid container columnSpacing={3}>
-					<Grid
-						size={{ xs: 0, lg: 4 }}
-						sx={{ display: { xs: "none", lg: "block" } }}
-					>
+					<Grid size={{ xs: 0, lg: 4 }} sx={{ display: { xs: "none", lg: "block" } }}>
 						<CatalogFilter
 							searchParams={searchParams}
 							setSearchParams={setSearchParams}
 						/>
 					</Grid>
 
-					<Grid
-						container
-						size={{ xs: 12, lg: 8 }}
-						flexDirection="column"
-					>
+					<Grid container size={{ xs: 12, lg: 8 }} flexDirection="column">
 						<Grid size={12}>
 							<Typography variant="h4">Каталог</Typography>
 						</Grid>
@@ -148,16 +136,16 @@ function CatalogList({ category, searchParams, setSearchParams }) {
 								.sort((a, b) => {
 									switch (sort) {
 										case "saleRate-desc":
-											return a.saleRate - b.saleRate;
-											break;
+											return a.saleRate - b.saleRate
+											break
 										case "price-asc":
-											return a.price - b.price;
-											break;
+											return a.price - b.price
+											break
 										case "price-desc":
-											return b.price - a.price;
-											break;
+											return b.price - a.price
+											break
 										default:
-											break;
+											break
 									}
 								})
 								.map((item) => (
@@ -175,9 +163,7 @@ function CatalogList({ category, searchParams, setSearchParams }) {
 								))}
 
 							{!!products.length && !productsFiltered.length && (
-								<Typography variant="h5">
-									Товаров не найдено{" "}
-								</Typography>
+								<Typography variant="h5">Товаров не найдено </Typography>
 							)}
 						</Grid>
 					</Grid>
@@ -190,6 +176,6 @@ function CatalogList({ category, searchParams, setSearchParams }) {
 				setSearchParams={setSearchParams}
 			/>
 		</section>
-	);
+	)
 }
-export default observer(CatalogList);
+export default observer(CatalogList)

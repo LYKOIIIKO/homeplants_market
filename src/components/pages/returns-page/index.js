@@ -1,3 +1,3 @@
-import ReturnsPage from "./ui";
+import ReturnsPage from "./ui"
 
-export default ReturnsPage;
+export default ReturnsPage

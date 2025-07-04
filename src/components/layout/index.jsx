@@ -1,7 +1,7 @@
-import { Box, CssBaseline } from "@mui/material";
-import Footer from "./footer";
-import Header from "./header";
-import Main from "./main";
+import { Box, CssBaseline } from "@mui/material"
+import Footer from "./footer"
+import Header from "./header"
+import Main from "./main"
 
 function Layout() {
 	return (
@@ -19,6 +19,6 @@ function Layout() {
 				<Footer />
 			</Box>
 		</>
-	);
+	)
 }
-export default Layout;
+export default Layout

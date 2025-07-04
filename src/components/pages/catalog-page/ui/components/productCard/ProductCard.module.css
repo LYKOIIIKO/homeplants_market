@@ -9,7 +9,7 @@
 	display: flex;
 	visibility: visible;
 	opacity: 1;
-	transition: opacity 0.5s ease ;
+	transition: opacity 0.5s ease;
 }
 
 .wrapperImg {

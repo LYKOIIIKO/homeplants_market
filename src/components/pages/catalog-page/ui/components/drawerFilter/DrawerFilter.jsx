@@ -1,8 +1,8 @@
-import { Box, Drawer } from "@mui/material";
-import CatalogFilter from "../catalogFilter/CatalogFilter";
+import { Box, Drawer } from "@mui/material"
+import CatalogFilter from "../catalogFilter/CatalogFilter"
 
 function DrawerFilter(props) {
-	const { open, handler ,searchParams, setSearchParams} = props;
+	const { open, handler, searchParams, setSearchParams } = props
 	return (
 		<Drawer
 			variant="temporary"
@@ -19,11 +19,11 @@ function DrawerFilter(props) {
 				},
 			}}
 		>
-			<Box m={2} >
-				<CatalogFilter searchParams={searchParams} setSearchParams={setSearchParams}/>
+			<Box m={2}>
+				<CatalogFilter searchParams={searchParams} setSearchParams={setSearchParams} />
 			</Box>
 			<Box height="100%" onClick={handler} sx={{ textAlign: "center" }}></Box>
 		</Drawer>
-	);
+	)
 }
-export default DrawerFilter;
+export default DrawerFilter

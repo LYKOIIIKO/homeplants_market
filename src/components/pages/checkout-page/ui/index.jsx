@@ -1,16 +1,16 @@
-import { Box, Container, Divider, Grid, Typography } from "@mui/material";
-import { addDoc, collection, serverTimestamp } from "firebase/firestore";
-import { observer } from "mobx-react-lite";
-import { db } from "../../../../firebase/initial";
-import cartStore from "../../../../store/cartStore";
-import catalogStore from "../../../../store/catalogStore";
-import CheckoutForm from "./components/checkoutForm/CheckoutForm";
-import CheckoutTotal from "./components/checkoutTotal/CheckoutTotal";
+import { Box, Container, Divider, Grid, Typography } from "@mui/material"
+import { addDoc, collection, serverTimestamp } from "firebase/firestore"
+import { observer } from "mobx-react-lite"
+import { db } from "../../../../firebase/initial"
+import cartStore from "../../../../store/cartStore"
+import catalogStore from "../../../../store/catalogStore"
+import CheckoutForm from "./components/checkoutForm/CheckoutForm"
+import CheckoutTotal from "./components/checkoutTotal/CheckoutTotal"
 
 function CheckoutPage() {
-	const { cart } = cartStore;
-	const { products } = catalogStore;
-	const cartTotal = cartStore.getCartTotal(products);
+	const { cart } = cartStore
+	const { products } = catalogStore
+	const cartTotal = cartStore.getCartTotal(products)
 
 	const submitForm = (order) => {
 		const data = {
@@ -34,12 +34,12 @@ function CheckoutPage() {
 			phone: order.phone,
 			total: cartTotal,
 			status: "Заказ создан",
-		};
+		}
 		const sendOrder = async (data) => {
-			await addDoc(collection(db, "orders"), data);
-		};
-		sendOrder(data);
-	};
+			await addDoc(collection(db, "orders"), data)
+		}
+		sendOrder(data)
+	}
 
 	return (
 		<Box>
@@ -54,10 +54,7 @@ function CheckoutPage() {
 			<Container maxWidth="xl">
 				{!!cart.length && (
 					<Grid container py={4} spacing={2}>
-						<Grid
-							size={{ xs: 12, lg: 6 }}
-							sx={{ order: { xs: 1, lg: 0 } }}
-						>
+						<Grid size={{ xs: 12, lg: 6 }} sx={{ order: { xs: 1, lg: 0 } }}>
 							<CheckoutForm submitForm={submitForm} />
 						</Grid>
 						<Grid
@@ -72,6 +69,6 @@ function CheckoutPage() {
 				)}
 			</Container>
 		</Box>
-	);
+	)
 }
-export default observer(CheckoutPage);
+export default observer(CheckoutPage)

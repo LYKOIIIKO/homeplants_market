@@ -1,11 +1,11 @@
-import { Navigation } from "swiper/modules";
-import { Swiper, SwiperSlide } from "swiper/react";
-import ProductCard from "../../../../../../catalog-page/ui/components/productCard/ProductCard";
-import SliderBottomBtns from "./SliderBottomBtns";
-import "./SliderPopular.css";
+import { Navigation } from "swiper/modules"
+import { Swiper, SwiperSlide } from "swiper/react"
+import ProductCard from "../../../../../../catalog-page/ui/components/productCard/ProductCard"
+import SliderBottomBtns from "./SliderBottomBtns"
+import "./SliderPopular.css"
 
 function SliderPopular(props) {
-	const { products } = props;
+	const { products } = props
 	return (
 		<>
 			<Swiper
@@ -38,16 +38,17 @@ function SliderPopular(props) {
 				}}
 			>
 				{products?.map((item) => {
-					if(item.saleRate >= 60) return (
-						<SwiperSlide>
-							<ProductCard key={item.id} product={item} />
-						</SwiperSlide>
-					);
+					if (item.saleRate >= 60)
+						return (
+							<SwiperSlide>
+								<ProductCard key={item.id} product={item} />
+							</SwiperSlide>
+						)
 				})}
 
 				<SliderBottomBtns />
 			</Swiper>
 		</>
-	);
+	)
 }
-export default SliderPopular;
+export default SliderPopular

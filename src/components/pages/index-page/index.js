@@ -1,3 +1,3 @@
-import IndexPage from "./ui";
+import IndexPage from "./ui"
 
-export default IndexPage;
+export default IndexPage

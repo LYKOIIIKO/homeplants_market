@@ -1,3 +1,3 @@
-import PayPage from "./ui";
+import PayPage from "./ui"
 
-export default PayPage;
+export default PayPage

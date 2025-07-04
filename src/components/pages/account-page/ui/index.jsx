@@ -1,5 +1,5 @@
-import { Box, Container, Typography } from "@mui/material";
-import PageNavigation from "../../../shared/ui/pageNavigation/PageNavigation";
+import { Box, Container, Typography } from "@mui/material"
+import PageNavigation from "../../../shared/ui/pageNavigation/PageNavigation"
 
 function AccountPage() {
 	return (
@@ -14,6 +14,6 @@ function AccountPage() {
 				</Container>
 			</Box>
 		</>
-	);
+	)
 }
-export default AccountPage;
+export default AccountPage

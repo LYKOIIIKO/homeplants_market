@@ -1,3 +1,3 @@
-import BlogPage from "./ui";
+import BlogPage from "./ui"
 
-export default BlogPage;
+export default BlogPage

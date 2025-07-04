@@ -1,12 +1,20 @@
-import ArrowBackIosNewIcon from "@mui/icons-material/ArrowBackIosNew";
-import ArrowForwardIosIcon from "@mui/icons-material/ArrowForwardIos";
-import { Box, IconButton } from "@mui/material";
-import { useSwiper } from "swiper/react";
+import ArrowBackIosNewIcon from "@mui/icons-material/ArrowBackIosNew"
+import ArrowForwardIosIcon from "@mui/icons-material/ArrowForwardIos"
+import { Box, IconButton } from "@mui/material"
+import { useSwiper } from "swiper/react"
 
 function SliderBottomBtns() {
-	const swiper = useSwiper();
+	const swiper = useSwiper()
 	return (
-		<Box sx={{ bgcolor: "transparent", display: "flex", gap: "40px", justifyContent:'center', mt:'20px' }}>
+		<Box
+			sx={{
+				bgcolor: "transparent",
+				display: "flex",
+				gap: "40px",
+				justifyContent: "center",
+				mt: "20px",
+			}}
+		>
 			<IconButton
 				className="slider_bottom_btn-prev"
 				onClick={() => swiper.slidePrev()}
@@ -22,6 +30,6 @@ function SliderBottomBtns() {
 				<ArrowForwardIosIcon fontSize="large" color="info" />
 			</IconButton>
 		</Box>
-	);
+	)
 }
-export default SliderBottomBtns;
+export default SliderBottomBtns

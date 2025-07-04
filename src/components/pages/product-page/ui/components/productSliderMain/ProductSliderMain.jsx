@@ -1,11 +1,11 @@
-import { Box } from "@mui/material";
-import { useState } from "react";
-import { FreeMode, Thumbs } from "swiper/modules";
-import { Swiper, SwiperSlide } from "swiper/react";
-import s from './ProductSliderMain.module.css';
+import { Box } from "@mui/material"
+import { useState } from "react"
+import { FreeMode, Thumbs } from "swiper/modules"
+import { Swiper, SwiperSlide } from "swiper/react"
+import s from "./ProductSliderMain.module.css"
 
 function ProductSliderMain({ product }) {
-	const [thumbsSwiper, setThumbsSwiper] = useState(null);
+	const [thumbsSwiper, setThumbsSwiper] = useState(null)
 
 	return (
 		<Box sx={{ px: 2 }}>
@@ -52,6 +52,6 @@ function ProductSliderMain({ product }) {
 				</SwiperSlide>
 			</Swiper>
 		</Box>
-	);
+	)
 }
-export default ProductSliderMain;
+export default ProductSliderMain
