@@ -18,7 +18,8 @@ class CatalogStore {
 	}
 
 	async getProduct(id) {
-		return await this.products.find((item) => item.id == id)
+		if (this.products.length) return this.products.find((item) => item.id == id)
+		else return {}
 	}
 }
 

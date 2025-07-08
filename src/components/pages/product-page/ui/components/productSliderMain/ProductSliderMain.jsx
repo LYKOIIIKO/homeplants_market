@@ -23,10 +23,10 @@ function ProductSliderMain({ product }) {
 					<img src={product.img2} />
 				</SwiperSlide>
 				<SwiperSlide>
-					<img src={product.img3} />
+					<img src={product.img3 || product.img1} />
 				</SwiperSlide>
 				<SwiperSlide>
-					<img src={product.img4} />
+					<img src={product.img4 || product.img2} />
 				</SwiperSlide>
 			</Swiper>
 			<Swiper

@@ -8,8 +8,6 @@ import SectionPopularProducts from "../../index-page/ui/components/sectionPopula
 import ProductInfo from "./components/productInfo/ProductInfo"
 
 function ProductPage() {
-	const { products } = catalogStore
-
 	const { productId } = useParams()
 
 	const [product, setProduct] = useState({})
@@ -19,8 +17,9 @@ function ProductPage() {
 			const product = await catalogStore.getProduct(productId)
 			setProduct(product)
 		}
+
 		getProduct()
-	}, [products])
+	}, [product, productId])
 
 	return (
 		<>
