@@ -94,7 +94,10 @@ function ProductInfo({ product }) {
 								Поделиться:
 							</Typography>
 
-							<IconButton href="https://telegram.me/share/url?url=ВАШ_URL&text=ТЕКСТ">
+							<IconButton
+								href="https://telegram.me/share/url?url=ВАШ_URL&text=ТЕКСТ"
+								disabled
+							>
 								<TelegramIcon />
 							</IconButton>
 						</Box>

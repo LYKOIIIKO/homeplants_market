@@ -1,41 +1,33 @@
 .container {
 	display: flex;
 	flex-direction: column;
-	cursor: pointer;
-	gap: 15px;
-}
 
-.container:hover .wrapperTools {
-	display: flex;
-	visibility: visible;
-	opacity: 1;
-	transition: opacity 0.5s ease;
+	gap: 15px;
 }
 
 .wrapperImg {
 	position: relative;
-
 	display: flex;
 	align-items: center;
+	cursor: pointer;
 }
 
+.productImg,
 .wrapperImg:hover .productImgHover {
 	display: block;
+	opacity: 1;
 	visibility: visible;
 }
+.productImgHover,
 .wrapperImg:hover .productImg {
 	display: none;
+	opacity: 0;
 	visibility: hidden;
 }
 
 .productImg,
 .productImgHover {
 	width: 100%;
-}
-
-.productImgHover {
-	display: none;
-	visibility: hidden;
 }
 
 .wrapperInfo {
@@ -47,6 +39,7 @@
 
 .productTitle {
 	font-size: 20px !important;
+	cursor: pointer;
 }
 
 .productPrice {
@@ -57,9 +50,15 @@
 	position: absolute;
 	bottom: 10%;
 	right: 5%;
+	display: flex;
 	flex-direction: column;
 	gap: 5px;
 	padding: 5px;
 	border-radius: 20px !important;
-	transition: opacity 0.5s ease;
+	transition: all 0.2s ease-in !important;
+}
+
+.container:hover .wrapperTools {
+	visibility: visible;
+	opacity: 1;
 }

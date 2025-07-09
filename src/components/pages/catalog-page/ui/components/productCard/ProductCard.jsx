@@ -39,7 +39,6 @@ function ProductCard(props) {
 					variant="elevation"
 					elevation={4}
 					sx={{
-						display: { xs: "flex", md: "none" },
 						opacity: { xs: "1", md: "0" },
 						visibility: { xs: "visible", md: "hidden" },
 					}}

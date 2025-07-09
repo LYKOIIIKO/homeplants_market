@@ -10,6 +10,7 @@ import {
 } from "@mui/material"
 import { Link } from "react-router"
 import Logo from "../../../../../../assets/logo/Logo"
+import scrollToTop from "../../../../../shared/ui/scrollToTop"
 
 function FooterTop() {
 	return (
@@ -22,7 +23,7 @@ function FooterTop() {
 				alignItems={{ xs: "center", md: "flex-start" }}
 				pl={{ xs: 0, md: 1 }}
 			>
-				<Link to="/">
+				<Link onClick={scrollToTop} to="/">
 					<Logo />
 				</Link>
 				<Link target="_blank" to="tel:+375295550123">

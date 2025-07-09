@@ -15,7 +15,7 @@ import ReturnsPage from "../../../pages/returns-page"
 import WishlistPage from "../../../pages/wishlist-page"
 
 //helps scroll to top of the page
-const ScrollToTop = () => {
+export const ScrollToTop = () => {
 	const { pathname } = useLocation()
 
 	useEffect(() => {
