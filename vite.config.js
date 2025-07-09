@@ -1,6 +1,7 @@
 import react from "@vitejs/plugin-react"
 import { defineConfig } from "vite"
 import EnvironmentPlugin from "vite-plugin-environment"
+import { ViteImageOptimizer } from "vite-plugin-image-optimizer"
 import svgr from "vite-plugin-svgr"
 
 // https://vite.dev/config/
@@ -17,5 +18,6 @@ export default defineConfig({
 			"VITE_FIREBASE_APP_ID",
 			"VITE_FIREBASE_MEASUREMENT_ID",
 		]),
+		ViteImageOptimizer(),
 	],
 })
